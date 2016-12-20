@@ -1,0 +1,268 @@
+/* The Modal (background) */
+
+/* pasajero conductor */
+
+.header-text {
+position: absolute;
+top: 40%;
+left: 1.8%;
+right: auto;
+width: 96.66666666666666%;
+color: #080808;
+}
+
+.btn-min-block {
+min-width: 170px;
+line-height: 26px;
+}
+
+.btn-theme {
+color: #fff;
+background-color: transparent;
+border: 2px solid #fff;
+margin-right: 15px;
+}
+
+.btn-theme:hover {
+color: #000;
+background-color: #fff;
+border-color: #fff;
+}
+
+/*prueba*/
+
+img.movimiento{
+width: 200px;
+height: 150px;
+border-radius: 20px;
+}
+
+/*Fin prueba*/
+
+.modalregistrar {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+padding-top: 40px;
+padding-left: 1100px;
+}
+.modallogin {
+display: none; /* Hidden by default */
+position: fixed; /* Stay in place */
+z-index: 1; /* Sit on top */
+left: 0;
+top: 0;
+width: 100%; /* Full width */
+height: 100%; /* Full height */
+overflow: auto; /* Enable scroll if needed */
+background-color: rgb(0,0,0); /* Fallback color */
+background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+padding-top: 40px;
+/*padding-left: 1100px;*/
+}
+
+
+
+/* REGISTRARFORMULARIO*/
+
+.modal-content {
+margin: 5px auto;
+/*border: 1px solid #888;*/
+width: 320px;
+height: 300px;
+}
+
+/* boton cerrar */
+
+.close {
+position: absolute;
+right: 25px;
+top: 0;
+color: #000;
+font-size: 35px;
+font-weight: bold;
+}
+
+/* Close button on hover */
+
+.close:hover,
+.close:focus {
+color: red;
+cursor: pointer;
+}
+
+/* Zoom Animacion */
+
+.animate {
+-webkit-animation: animatezoom 0.6s;
+animation: animatezoom 0.6s
+}
+@-webkit-keyframes animatezoom {
+from {-webkit-transform: scale(0)}
+to {-webkit-transform: scale(1)}
+}
+@keyframes animatezoom {
+from {transform: scale(0)}
+to {transform: scale(1)}
+}
+
+/* input */
+
+input[type=text], input[type=password], input[type=email] , input[type=tel] {
+width: 100%;
+padding: 12px 20px;
+margin: 8px 0;
+display: inline-block;
+border: 1px solid #ccc;
+box-sizing: border-box;
+}
+
+/* style botones */
+
+.botonverde {
+background-color: #4CAF50;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100px;
+}
+
+/* boton cerrar */
+
+.cancelbtn {
+background-color:red;
+color: white;
+padding: 14px 20px;
+margin: 8px 0;
+border: none;
+cursor: pointer;
+width: 100px;
+}
+
+.botonprincipio{
+background-color:black;
+color: white;
+padding: 14px 20px;
+border: none;
+cursor: pointer;
+}
+
+/* padding containers */
+
+.formulario {
+padding-right: 16px;
+padding-left: 16px;
+padding-top: 10px;
+background-color: white;
+border: 5px black solid ;
+}
+
+h4, h1{
+    text-align: center;
+}
+h2{
+    font-family: Freestyle Script;
+    font-size: 3.9em;
+    color: blanchedalmond;
+}
+.panel-default > .panel-heading{
+    background-color: #C5DFFA;
+}
+.btn-default{
+    background-color: lightskyblue;
+}
+.panel-body{
+    background-color: #E2E4E6;
+}
+body{
+    background-image: url(../images/fondo-claro.jpg);
+}
+footer{
+    background-color: yellow;
+}
+/*///////DISEÑO DE PERFIL////////*/
+.cajaperfil{
+    width: 100%;
+}
+table {
+ 
+    margin: 45px;    
+    width: 90%; 
+   
+   }
+
+th {     
+    font-size: 1.5em;     
+   text-decoration: underline;
+    font-weight: bold;     
+    padding: 11px; 
+    background: #b9c9fe;
+    border-top: 4px ridge #aabcfe;    
+    border-bottom: 1px ridge #fff; 
+    color: #039; }
+.foto{
+    background-color: #6699ff;
+}
+td {  
+    font-family: Harlow Solid;
+    font-size: 1.2em;  
+    text-align: center;
+    padding: 8px;     
+    background: #e8edff;     
+    border-bottom: 1px ridge #fff;
+    color: #669;    
+    }
+
+tr:hover td { 
+    background: #d0dafd; 
+    color: #339; }
+
+.nombre_usuario_nav{
+    color: white;
+}
+#logeado_error{
+    display: none;
+    color: red;
+}
+.visualizacionNuevaContrasena{
+    display: none;
+    
+}
+
+.panel-body{
+    text-align: center;
+    
+}
+
+textarea{
+    width: 900px;
+    height: 130px;
+}
+
+
+
+/*///pie de pagina*/
+
+footer{
+
+background-color: #2F3A49;
+margin-bottom: 0px;
+color: whitesmoke;
+padding-bottom: 35px;
+}
+.container2{
+    width: 1170px;
+}
+.nombre_logeado{
+    color: #6699ff;
+    
+}
