@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="miApp">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" type="image/png" href="../images/botones/favicon.PNG"/>
+
+        <title>eAsyMove</title>
+        <!-- LIBRERIAS------>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/modern-business.c ss" rel="stylesheet">
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/bootstrap-social.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/lib/angular.min.js" type="text/javascript"></script>
+        <script src="../js/lib/jquery.js" type="text/javascript"></script>
+        <script src="../js/lib/bootstrap.min.js" type="text/javascript"></script>
+
+        <!-- NUESTROS FICHEROS---->
+        <link href="../css/css.css" rel="stylesheet" type="text/css"/>
+        <link rel="../stylesheet" href="css/modern-business.css" type="text/css">
+        <script src="../js/comprobar_session_otros.js" type="text/javascript"></script>
+        <script src="../js/cambiar_imagenes_pueblos.js" type="text/javascript"></script>
+        <script src="../js/registro_login.js" type="text/javascript"></script>
+        <script src="../js/perfil_usuario.js" type="text/javascript"></script>
+        <script src="../js/subir_arriba.js" type="text/javascript"></script>
+        <script src="../js/reloj.js" type="text/javascript"></script>
+        <script src="../js/conductor.js" type="text/javascript"></script>
+        
+    </head>
+
+    <body>
+        <div class="ir-arriba ">
+
+
+            <img src="../images/botones/flecha_subir.png" alt=""/>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top pie" role="navigation">
+            <div class="container pie">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand parpadea" id="nombrempresa" href="../index.html">eAsyMove</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zonas <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="portfolio-1-col.html">DURANGUESADO</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-2-col.html">GRAN BILBAO</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-3-col.html">ARRATIA-NERBIOI</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-4-col.html">LEA-ARTIBAI</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-item.html">BUSTURIALDEA</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-item.html">URIBE</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contacto.html">Contacto</a>
+                        </li>
+                        
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" >
+                        <div id="nav_logeado" ng-controller="miControlador">
+                            <li class="nombre_usuario_nav" ng-repeat="usuario in usuarios">
+                                <a href="perfil_usuario1.html">Has entrado como <span class="nombre_logeado">{{usuario.usuario}}</span></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+                                <ul class="dropdown-menu menu_hover">
+                                    <li>
+                                        <a href="cambiar_perfil_usuario.html"><img width="25" height="20" src="../images/configuracion/config.png" alt=""/>&nbsp;&nbsp;<span class="hover">Modificar Perfil</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="perfil_usuario1.html"><img width="25" height="20" src="../images/configuracion/Users.png" alt=""/>&nbsp;&nbsp;<span class="hover">Ver Perfil</span></a>
+
+                                    </li>
+                                    <li>
+                                        <a href="#" class="salirUsuario"><img width="25" height="20" src="../images/configuracion/salir.png" alt=""/>&nbsp;&nbsp;<span class="hover">Cerrar sesion</span></a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                        <!-- <li>
+                             <button type="button" id="salirUsuario">Salir</button>
+                         </li> -->
+                        <div id="nav_no_logeado">
+                            <li>
+                                <a onclick="abrirRegistrar()" id="abrirRegistrar" href="#">Registrar</a>
+                            </li>
+                            <li>
+                                <a onclick="abrirLogin()" id="abrirLogin" href="#">Entrar</a>
+                            </li>
+                             <li>
+                                <div id="id02" class="modalregistrar" >
+
+                                    <form id="login"  method="POST" action="">
+
+                                        <div class="formulario" id="registrar">
+                                            <label><b>Usuario:</b></label>
+                                            <input type="text" placeholder="Nombre de usuario" class="c_input"  id="usuario">
+
+                                            <label><b>Nombre:</b></label>
+                                            <input type="text" placeholder="Nombre"  class="c_input"  id="nombre">
+
+                                            <label><b>Apellido:</b></label>
+                                            <input type="text" placeholder="Apellido"  class="c_input"  id="apellido">
+
+                                            <label><b>Contraseña:</b></label>
+                                            <input type="password" placeholder="Contraseña"  class="c_input"  id="contrasena">
+
+                                            <label><b>Repita Contraseña:</b></label>
+                                            <input type="password" placeholder="Confirmar contraseña"  class="c_input"  id="contrasena1">
+
+                                            <label><b>Correo:</b></label>
+                                            <input type="email" placeholder="e-mail"  class="c_input"  id="correo"><br>
+
+                                            <label><b>Sexo:</b></label>
+                                            <select id="sexo">
+                                                <option  value="masculino" selected="">Masculino</option>
+                                                <option  value="femenino">Femenino</option>
+
+                                            </select> 
+                                            <label><b>Tienes Coche:</b></label>
+                                            <input type="checkbox" value="0" id="coche"/>
+                                           
+
+
+                                            <br/>
+                                            <br/>
+
+                                            <label><b>Telefono:</b></label>
+                                            <input type="tel" id="telefono"  class="c_input"  placeholder=" 000 00 00 00">
+
+
+
+                                            <!--<button type="submit" onsubmit="realizaProceso($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(), $('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())" >registrar</button>-->
+                                            <input type="button" value="Registrar" id="registrar_usu" class="botonverde"/>
+                                            <!--   parametros_requeridos_nok($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(),$('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())-->
+
+
+
+                                            <button type="button" onclick="ocultarRegistro()" class="ocultarRegistro cancelbtn">Cancelar</button>
+                                        </div>
+                                    </form>
+                                    Resultado: <span id="resultado">0</span>
+                                </div>
+
+                                <div id="idlogin" class="modallogin">
+                                    
+                                    <!-- Modal Content -->
+                                    <form action="" method="POST" class=" animate">
+
+
+                                        <div class="formulario" id="logear">
+                                            <label><b>Usuario</b></label>
+                                            <input type="text" class="c_input" placeholder="Usuario" id="loginUsuario" >
+
+                                            <label><b>Contraseña</b></label>
+                                            <input type="password" class="c_input" placeholder="Contraseña" id="loginContrasena" >
+
+                                            <span id="logeado_error">Usuario o contraseña no valido.<br>
+                                                                     El usuario tiene que estar verificado.
+                                            </span>
+                                            <br>
+
+                                            <input type="button" id="logear_usu" value="Acceder" class="botonverde"/>
+
+
+                                            <button type="button" onclick="ocultarLogin()" class="ocultarLogin cancelbtn">Cancelar</button>
+                                            <input type="checkbox" checked="checked"> Remember me<br>
+                                            <span class="psw"> <a href="#">He olvidado mi contraseña?</a></span>
+                                        </div>
+
+                                        <div class="container" style="background-color:#f1f1f1">
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </div>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">ESP<b class="caret"></b></a>
+                            <ul class="dropdown-menu menu_hover">
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">Euskera</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">Español</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">English</span></a>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <ul class="reloj">
+                               
+                                     <h7 id="tx"></h7><p id="title"></p>
+                                
+                                
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+
+        <!-- Page Content -->
+        <div class="container">
+
+            <!-- Page Heading/Breadcrumbs -->
+
+            <!-- /.row -->
+
+            <div class="row">
+
+                <!-- Blog Entries Column -->
+                <div class="col-md-12">
+                    <br>
+                    <br>
+                    <br>
+                    <!-- First Blog Post -->
+                    <h2>
+                        <a href="#">Politica De Privacidad</a>
+                    </h2>
+                    <p style="text-align: justify;"></p><h2>1. General</h2><p></p>
+                    <p style="text-align: justify;">Comuto SA  (“<strong>eAsyMove</strong>”, &#8220;nosotros&#8221; o &#8220;nuestro&#8221;), interviniendo como responsable del tratamiento de datos, se compromete a proteger y a respetar tu privacidad. Este documento (la “Política de Privacidad”) está diseñado para informarte sobre nuestras prácticas en lo referente a la recopilación, uso y divulgación de la información que nos proporciones a través de esta página web <a href="../index.html" target="_blank"><u><span style="color: #0066cc;">www.eAsyMove.es</span></u></a> (la “Página Web”) o de nuestras aplicaciones móviles (la “App<strong>”</strong>).</p>
+                    <p style="text-align: justify;">Esta Política de Privacidad (junto con nuestros <a href="condiciones_generales_de_uso.html" target="_blank"><u><span style="color: #0066cc;">Términos y Condiciones</span></u></a> y el resto de documentos a los que se hace referencia en ellos y en nuestra <a href="Politica_Cookies.html" target="_blank"><u><span style="color: #0066cc;">Política de Cookies</span></u></a> establece el marco según el cual se recogerán y tratarán tus datos personales. Lee detenidamente este texto para que comprendas nuestra posición y prácticas respecto a tus datos personales y cómo los trataremos.</p>
+                    <p style="text-align: justify;"></p><h2>2. ¿Qué información es la que recogemos?</h2><p></p>
+                    <p style="text-align: justify;">Podemos recopilar y procesar los siguientes datos sobre ti:</p>
+                    <p style="text-align: justify;"></p><h3>2.1 Información que tú nos proporcionas</h3><p></p>
+                    <p style="text-align: justify;">Puede que nos facilites información, incluso información que puede identificarte (“datos personales”), cuando utilizas la Página Web/App al rellenar sus formularios (como, por ejemplo, el formulario de registro), cuando entras en cualquiera de nuestros concursos, promociones o encuestas o cuando te pones en contacto con nosotros por teléfono, correo electrónico o de cualquier otra forma, así como cuando nos informas de algún problema en nuestra Página Web/App.</p>
+                    <p style="text-align: justify;">La información que nos proporcionas puede contener:</p>
+                    <p style="text-align: justify;"><strong>2.1.1</strong> Información obligatoria necesaria para registrarse en el servicio que proporcionamos en nuestra Página Web/App o para acceder a otros de nuestros servicios; estos datos incluyen tu nombre, correo electrónico, fecha de nacimiento, sexo, número de teléfono móvil y una contraseña. Todos estos campos son obligatorios. eAsyMove no podrá proporcionarte los servicios ofrecidos en nuestra página y app si no nos das la información necesaria para poder crearte una cuenta de usuario en nuestra Página Web/App;</p>
+                    <p style="text-align: justify;"><strong>2.1.2</strong> Una fotografía.</p>
+                    <p style="text-align: justify;"><strong>2.1.3</strong> Una dirección postal.</p>
+                    <p style="text-align: justify;"><strong>2.1.4</strong> Información sobre tu coche.</p>
+                    <p style="text-align: justify;"><strong>2.1.5</strong> Tu mini-biografía.</p>
+                    <p style="text-align: justify;"><strong>2.1.6</strong> Un registro de la correspondencia que hayas mantenido con nosotros.</p>
+                    <p style="text-align: justify;"><strong>2.1.7</strong> Un registro de cualquier reserva que realices o cualquier anuncio de viaje que publiques a través de nuestra Web/App.</p>
+                    <p style="text-align: justify;"><strong>2.1.8</strong> Detalles sobre las transacciones económicas o contables, incluidas las operaciones efectuadas a través de nuestra Web/App o de cualquier otro medio. Esto puede incluir información como, por ejemplo, tu tarjeta de pago o datos bancarios, información relativa a viajes o tramos de viaje que hayas reservado u ofrecido a través de nuestra Página Web/App.</p>
+                    <p style="text-align: justify;"><strong>2.1.9</strong> Detalles de tus visitas a nuestra Web/App y los contenidos a los que accedes.</p>
+                    <p style="text-align: justify;"><strong>2.1.10</strong> Tus respuestas a nuestras encuestas o cuestionarios, como tus evaluaciones sobre los viajes que hayas compartido con otros miembros de nuestra comunidad. Dicha información puede ser empleada para fines de análisis y estudio de las conductas de los usuarios.</p>
+                    <p style="text-align: justify;"><strong>2.1.11</strong> Información que podemos solicitarte cuando informes acerca de un problema con nuestra Página Web/App o nuestro servicio, como, por ejemplo, la causa de tu solicitud de asistencia.</p>
+                    <p style="text-align: justify;"><strong>2.1.12</strong> Información sobre tu localización, siempre y cuando hayas dado tu consentimiento a la recopilación y tratamiento de estos datos.</p>
+                    <p style="text-align: justify;"></p><h3>2.2 Información que recogemos automáticamente</h3><p></p>
+                    <p style="text-align: justify;"><strong>2.2.1</strong> Si te registras a través de los métodos de autenticación de redes sociales, eAsyMove tendrá acceso a ciertos datos personales (p. ej. nombre, apellidos, foto, correo electrónico, número de amigos en Facebook, etc.) de tu cuenta en dicha red social, de acuerdo con los términos y condiciones aplicables. Recogemos algunos de tus datos personales cuando interactúes con las funciones de las redes sociales, como la pestaña &#8220;Me gusta&#8221;.</p>
+                    <p style="text-align: justify;"><strong>2.2.2</strong> Respecto a cada una de tus visitas a nuestra Página Web/App, podremos recoger, de acuerdo con la legislación aplicable y, cuando así sea necesario, con tu consentimiento, información referente a los dispositivos que empleas y las redes a las que te conectas cuando haces uso de nuestros servicios. Esto puede incluir la siguiente información: tu dirección IP, información de conexión, tipo y versión de navegador, tipos y versiones de los <em>plugins</em> o complementos de tu navegador, sistema operativo y plataforma, información sobre tu visita incluido el historial detallado de la URL a, a través y desde nuestra Página Web/App, productos que hayas visto o buscado, errores de descarga, duración de las visitas a determinadas páginas, interacciones con la página y número de teléfono desde el que nos hayas llamado. Recogemos esta información empleando diversas tecnologías, incluidas las cookies (para más información, ver nuestra <a href="Politica_Cookies.html"><u><span style="color: #0066cc;">Política de Cookies</span></u></a>.</p>
+                    <p style="text-align: justify;"><strong>2.2.3</strong> También recopilamos información global sobre tu actividad en nuestra plataforma (como, por ejemplo, el número de viajes ofrecidos, tu tiempo de respuesta a los mensajes, etc.). Esta información puede ser publicada en tu perfil público en nuestra plataforma.</p>
+                    <p style="text-align: justify;"></p><h2>3. ¿Cómo usamos la información que recogemos?</h2><p></p>
+                    <p style="text-align: justify;">Usaremos la información recogida con el fin de:</p>
+                    <p style="text-align: justify;"><strong>3.1</strong> cumplir con nuestras obligaciones en virtud de los contratos que firmemos entre tú y nosotros y para proporcionarte la información y los servicios que nos solicites;</p>
+                    <p style="text-align: justify;"><strong>3.2</strong> enviarte información relativa a nuestros servicios por correo electrónico y/o mensaje de texto y/o cualquier otro medio de comunicación (p.ej. tu confirmación de reserva);</p>
+                    <p style="text-align: justify;"><strong>3.3</strong> para percibir los pagos que realices o para transferirte a ti los pagos que hayamos cobrado en tu nombre;</p>
+                    <p style="text-align: justify;"><strong>3.4</strong> para permitirte personalizar tu perfil de usuario en nuestra plataforma;</p>
+                    <p style="text-align: justify;"><strong>3.5</strong> para permitirte comunicarte e interactuar con otros miembros acerca de nuestros servicios o sobre de los viajes que vayas a compartir o hayas compartido con otros miembros y/o para organizar dichos viajes;</p>
+                    <p style="text-align: justify;"><strong>3.6</strong> para darte acceso a nuestros servicios de asistencia y para permitirte comunicarte con nuestro equipo de relaciones entre miembros;</p>
+                    <p style="text-align: justify;"><strong>3.7</strong> para garantizar el cumplimiento con (i) la legislación aplicable, (ii) nuestros Términos y Condiciones, (iii) Política de Privacidad (iv) y Código de buena Conducta. Determinados incumplimientos que consideremos como inapropiados pueden conducir a la suspensión de tu cuenta;</p>
+                    <p style="text-align: justify;"><strong>3.8</strong> para enviarte, de acuerdo con la legislación aplicable y, cuando así sea necesario, con tu consentimiento, mensajes de marketing e información necesaria para facilitar el servicio o el proceso de reservas y para ofrecerte sugerencias y recomendaciones sobre bienes y servicios relacionados que puedan interesarte. También usamos tus datos para enviarte publicidad directa en tus plataformas de redes sociales. Para obtener información más detallada sobre su funcionamiento y sobre los datos que obtenemos, visita las secciones correspondientes de las plataformas de las redes sociales;</p>
+                    <p style="text-align: justify;"><strong>3.9</strong> para notificarte cualquier cambio en nuestros servicios;</p>
+                    <p style="text-align: justify;"><strong>3.10</strong> para administrar nuestra Web/App y para operaciones internas, incluida la resolución de problemas, el análisis de datos, pruebas, investigación y encuestas;</p>
+                    <p style="text-align: justify;"><strong>3.11</strong> para asegurar que el contenido se presente de la manera más eficaz para ti y para tu dispositivo;</p>
+                    <p style="text-align: justify;"><strong>3.12</strong> para permitirte participar en las funciones interactivas de nuestro servicio, cuando así lo solicites;</p>
+                    <p style="text-align: justify;"><strong>3.13</strong> como parte de nuestros esfuerzos por mantener segura y a salvo nuestra Página Web/App;</p>
+                    <p style="text-align: justify;"><strong>3.14</strong> para medir o comprender la eficacia de la publicidad que te enviamos, tanto a ti como a terceros, y para enviarte información que te pueda interesar.</p>
+                    <p style="text-align: justify;"></p><h2>4. ¿Quiénes son los destinatarios de la Información que recogemos sobre ti y con qué propósito?</h2><p></p>
+                    <p style="text-align: justify;"><strong>4.1</strong> Cuando haces uso de nuestros servicios, cierta información sobre ti es compartida con miembros relevantes de nuestras comunidades, tanto en tu perfil público como durante el proceso de reserva, únicamente en lo que resulte necesario para la prestación del servicio (p. ej., damos tu número de teléfono a los miembros con quien vayas a compartir un viaje).</p>
+                    <p style="text-align: justify;"><strong>4.2</strong> Podemos recibir y enviar información acerca de ti, incluidos tus datos personales, si haces uso de otras páginas web o Apps que operamos o de otras entidades de eAsyMove o sociedades afiliadas a la misma, a los efectos estipulados en esta Política de Privacidad.</p>
+                    <p style="text-align: justify;"><strong>4.3</strong> También trabajamos estrechamente con terceros que puedan ser destinatarios de tus datos personales, por ejemplo:</p>
+                    <ul style="text-align: justify;">
+                        <li>nuestros socios comerciales que son plataformas de redes sociales y que pueden proporcionarte servicios relacionados, tales como la conexión de la información de tu perfil, desde sus plataformas de redes sociales a nuestra plataforma.</li>
+                        <li>nuestros socios comerciales que pueden anunciar sus servicios en nuestra Página Web y Aplicación y a los cuales puedes decidir suscribirte. Estos pueden consistir, en particular, en cualquier servicio relacionado con los nuestros, tales como seguros, servicios bancarios y de alquiler. Por ejemplo, puede que demos algo de tu información a la entidad aseguradora con la que colaboramos, AXA, con el objetivo de confirmar tu elegibilidad en nuestro programa de seguros.</li>
+                        <li>nuestros socios comerciales, que pueden anunciar nuestros servicios en sus páginas web.</li>
+                        <li>nuestros subcontratistas de servicios técnicos, de pago y envíos, proveedores de soluciones analíticas o entidades de crédito.</li>
+                    </ul>
+                    <p style="text-align: justify;"><strong>4.4</strong> Solo divulgaremos tus datos personales a los terceros mencionados en los artículos 4.2. y 4.3. arriba indicados en los siguientes casos:</p>
+                    <p style="text-align: justify;"><strong>4.4.1</strong> Cuando sea necesaria la participación de otro proveedor de servicios para el cumplimiento de cualquier contrato que suscribamos contigo, con el fin de facilitar o extender nuestros servicios (p. ej., si te cobramos algún tipo de cargo o nos abonas cualquier importe en relación con los servicios proporcionados en la Página Web/App);</p>
+                    <p style="text-align: justify;"><strong>4.4.2</strong> Como parte del proceso de reserva y con el fin de proporcionar los servicios solicitados, podremos publicar en la Página Web/App y/o transmitir a un pasajero (si eres un conductor) o a un conductor (si eres un pasajero), cierta información, como puede ser tu nombre, fotografía, número de teléfono móvil y/o correo electrónico.</p>
+                    <p style="text-align: justify;"><strong>4.4.3</strong> Como parte de nuestro sistema de calificación, las valoraciones que escribas serán publicadas en la Página Web/App. Estas valoraciones, incluido tu nombre abreviado y tu fotografía, serán visibles para todos los que visiten la Página Web/App.</p>
+                    <p style="text-align: justify;"><strong>4.4.4</strong> Utilizamos proveedores de servicios analíticos y motores de búsqueda para ayudarnos a mejorar y optimizar nuestra Página Web/App.</p>
+                    <p style="text-align: justify;"><strong>4.4.5</strong> Cuando así lo solicites expresamente (por ejemplo, cuando hagas uso de los métodos de autenticación proporcionados por las redes sociales).</p>
+                    <p style="text-align: justify;"><strong>4.4.6 </strong>Podremos distribuir partes de nuestra plataforma (incluidos los viajes que hayas publicado) para que otras páginas web de nuestros socios comerciales puedan publicarlas a través de API o widgets. En tales casos, en estas páginas web podrán aparecer ciertos datos de tu perfil público;</p>
+                    <p style="text-align: justify;"><strong>4.4.7</strong> Además, eAsyMove podrá divulgar tu información cuando sea legalmente requerido o cuando consideremos de buena fe que dicho acceso, protección o divulgación sea algo razonablemente necesario para (i) responder a una reclamación contra eAsyMove, (ii) cumplir con procedimientos legales, (iii) obligar al cumplimiento de un contrato con nuestros usuarios, de acuerdo con nuestros Términos y Condiciones, nuestra Política de Privacidad, nuestro Código de Buena Conducta, (iv) en el caso de emergencia que entrañe un peligro para la salud pública, muerte o daño físico a una persona (v) en el marco de una investigación o (vi) para proteger los derechos, la propiedad o la seguridad personal de eAsyMove, sus miembros u otras personas;</p>
+                    <p style="text-align: justify;"><strong>4.4.8</strong> En caso de que vendamos o adquiramos algún negocio o activo, en cuyo caso puede que debamos divulgar tus datos personales al potencial vendedor o comprador, de conformidad con la normativa aplicable</p>
+                    <p style="text-align: justify;"><strong>4.4.9</strong> Si eAsyMove o la totalidad o parte de sus activos es adquirida por un tercero, en cuyo caso los datos personales que mantenemos serán uno de los activos transferidos.</p>
+                    <p style="text-align: justify;"><strong>4.5</strong> De acuerdo con la legislación aplicable y, cuando sea necesario, con tu consentimiento(en tal caso, mediante la aceptación de esta Política de Privacidad otorgas tu consentimiento a este respecto), podremos combinar información sobre ti, incluidos tus datos personales e información obtenida a través de las cookies y que recibamos o enviemos a nuestros socios comerciales. Podremos emplear dicha información y la información combinada a los efectos establecidos anteriormente.</p>
+                    <p style="text-align: justify;"><strong>4.6</strong> Cabe destacar que, si decides compartir tu información con nosotros, incluidos tus datos personales, a través de los servicios de conexión puestos a tu disposición por nuestros socios comerciales, sus políticas y/o avisos de privacidad te serán igualmente aplicables, además de esta Política de Privacidad. Nosotros no controlamos la recogida ni el tratamiento de tu información que realicen nuestros socios comerciales en su propia plataforma.</p>
+                    <p style="text-align: justify;"></p><h2>5. ¿Cómo usamos y moderamos tus mensajes?</h2><p></p>
+                    <p style="text-align: justify;"><strong>5.1</strong> Podremos revisar, escanear o analizar los mensajes que intercambias con otros miembros de nuestra comunidad a través de nuestras Web/App, a efectos de prevención de fraude, mejora de servicio, asistencia al cliente y cumplimiento de los contratos suscritos con nuestros miembros (tales como nuestros Términos y Condiciones). Por ejemplo, con el fin de prevenir que un miembro eluda nuestro sistema de reserva online, podremos escanear y analizar los mensajes enviados a través de nuestra plataforma para verificar que no incluyen información de contacto o referencias a otra página web.</p>
+                    <p style="text-align: justify;"><strong>5.2</strong> Nunca escaneamos ni analizamos tus mensajes con otros miembros de nuestra comunidad con fines comerciales o publicitarios. Podremos emplear métodos automáticos con el fin de moderar dichos mensajes.</p>
+                    <p style="text-align: justify;"></p><h2>6. Publicidad directa y en nuestras comunicaciones enviadas por correo electrónico o sms</h2><p></p>
+                    <p style="text-align: justify;">De acuerdo con la legislación aplicable y, si es necesario, con tu consentimiento, podremos emplear la información que nos proporciones en nuestra Página Web/App con fines de marketing directo electrónico (p.ej. (i) para que recibas nuestros boletines de noticias, invitaciones a nuestros eventos u otras comunicaciones que creamos puedan ser de tu interés, o (ii) para enviarte publicidad directa en las plataformas de redes sociales o sitios y aplicaciones de terceros).</p>
+                    <p style="text-align: justify;"><span style="text-decoration: underline;">Por lo que respecta a los correos electrónicos profesionales</span>: puedes retirar tu consentimiento en cualquier momento (i) desactivando la casilla correspondiente en tu cuenta de miembro, (ii) haciendo clic en el enlace de cancelación de suscripción que te proporcionamos en cada una de las comunicaciones que eAsyMove te envíe o (iii) poniéndote en contacto con nosotros a través de la información de contacto prevista en el apartado 13 siguiente.</p>
+                    <p style="text-align: justify;"><span style="text-decoration: underline;">Por lo que respecta a la publicidad directa: </span></p>
+                    <p style="text-align: justify;">(i) En las plataformas de redes sociales (por ejemplo Facebook, Twitter): puedes oponerte en todo momento al procesamiento de datos configurando los parámetros relativos a la publicidad de tu cuenta;</p>
+                    <p style="text-align: justify;">(ii) En los sitios o aplicaciones de terceros: puedes leer nuestra <a href="Politica_Cookies.html">Política de Cookies</a> para entender como retirar tu consentimiento.</p>
+                    <p style="text-align: justify;"></p><h2>7. ¿Vamos a transferir tu información, cómo y a dónde?</h2><p></p>
+                    <p style="text-align: justify;">Mantenemos los datos personales que recogemos sobre ti dentro de la Unión Europea (“UE”). Dado que somos una compañía internacional, es posible que los datos personales que recogemos sobre ti, como parte de los servicios que te ofrecemos a través de la Página Web/App, sean transferidos a países no europeos en los que las leyes de protección de datos puedan implicar un nivel de protección inferior al de la legislación en vigor en tu país de residencia.</p>
+                    <p style="text-align: justify;">Esto ocurre cuando uno de nuestros responsables del tratamiento de datos se encuentra fuera de la UE como, por ejemplo, Estados Unidos. Podremos recurrir a dicho responsable para, entre otras cosas, el cumplimiento de tu solicitud de servicio, la moderación de las fotografías en tu cuenta de usuario, el tratamiento de tus datos de pago, la prestación de servicios de marketing y publicidad, y la prestación de servicios de asistencia a través de comunicaciones electrónicas.</p>
+                    <p style="text-align: justify;">Esto ocurre, además, respecto a las sociedades afiliadas a eAsyMove ubicadas fuera de la UE a las que podremos transferir parte de tu información para la prestación de nuestros servicios en estos países.</p>
+                    <p style="text-align: justify;">Cuando dicha transmisión de datos tiene lugar, garantizamos que se produzca de acuerdo con esta Política de Privacidad y que esté regulada por cláusulas contractuales estándar para este tipo de prácticas, aprobadas por la Comisión Europea, que garantizan una protección adecuada de los interesados.</p>
+                    <p style="text-align: justify;">A su solicitud, podremos proporcionarte una lista de los países en los que se guarda tu información y/o a los que podremos transferirla en un momento dado.</p>
+                    <p style="text-align: justify;"></p><h2>8. ¿Qué derechos puedes ejercer respecto a tus datos personales?</h2><p></p>
+                    <p style="text-align: justify;"><strong>8.1</strong> Cuando así lo permita la Ley, podrás tener derecho a obtener una copia de tus datos personales que obren en nuestro poder. Antes de responder a tu solicitud, podremos pedirte que (i) verifiques tu identidad y (ii) nos proporciones información más detallada para que podamos responder mejor a tu solicitud. Trataremos de responder en un plazo de tiempo razonable y, en todo caso, dentro del plazo requerido por la Ley. Si quieres ejercer este derecho, por favor, ponte en contacto con nosotros a través de los datos de contacto que te proporcionamos más adelante (véase el apartado 13).</p>
+                    <p style="text-align: justify;"><strong>8.2</strong> Como miembro de nuestra Página Web/App, puedes acceder a tus datos personales que obren en nuestro poder a través de tu cuenta, para corregir, modificar, o eliminar información que no sea correcta. Deberás proporcionarnos información veraz, correcta y completa para tu cuenta online, así como mantenerla actualizada. Podrás actualizar o eliminar tus datos personales, u oponerte a un tratamiento específico, poniéndote en contacto con nosotros a través de los datos de contacto que te facilitamos más adelante (véase el apartado 13).</p>
+                    <p style="text-align: justify;">Ten en cuenta que en determinados casos podremos conservar algunos datos tuyos, si así lo requiere la Ley o si tenemos motivos legítimos para ello. Por ejemplo, si consideramos que has cometido un fraude o que has infringido nuestros Términos y Condiciones, podremos querer conservar parte de tu información para evitar que puedas eludir las normas aplicables a nuestra Comunidad.</p>
+                    <p style="text-align: justify;"></p><h2>9. Cookies &amp; tecnologías similares</h2><p></p>
+                    <p style="text-align: justify;">Para saber más a este respecto, puedes ver nuestra <a href="Politica_Cookies.html" target="_blank"><u><span style="color: #0066cc;">Política de Cookies</span></u></a>.</p>
+                    <p style="text-align: justify;"></p><h2>10. Confidencialidad de tu contraseña</h2><p></p>
+                    <p style="text-align: justify;">Cuando decidas establecer una contraseña de acceso a ciertas partes de nuestra Web/App, será tu responsabilidad mantenerla en secreto. Por favor, no reveles tu contraseña a nadie.</p>
+                    <p style="text-align: justify;"></p><h2>11. Enlaces a otras páginas web y redes sociales</h2><p></p>
+                    <p style="text-align: justify;">Nuestra Página Web/App podrá contener, en determinados momentos, enlaces a, y desde, páginas web de nuestras redes asociadas, anunciantes y socios. Si sigues un enlace a cualquiera de dichas páginas web, ten en cuenta que éstas tienen sus propias políticas de privacidad y que nosotros no somos responsables de ellas. Verifica siempre estas políticas antes de proporcionarles ninguna información personal.</p>
+                    <p style="text-align: justify;"></p><h2>12. Modificaciones en nuestra política de privacidad</h2><p></p>
+                    <p style="text-align: justify;">Cualquier modificación que realicemos en nuestra Política de Privacidad se publicará en esta página. Cuando corresponda, te lo notificaremos o pediremos tu consentimiento. Por favor, comprueba frecuentemente si existe alguna actualización o modificación en nuestra Política de Privacidad.</p>
+                    <p style="text-align: justify;"></p><h2>13. Contacto</h2><p></p>
+                    <p style="text-align: justify;">Si en cualquier momento deseas ponerte en contacto con nosotros para comentarnos tu opinión respecto a nuestras prácticas de privacidad, o en relación con cualquier consulta sobre tus datos personales, puedes hacerlo a través de nuestra <a href="contacto.html" target="_blank"><u><span style="color: #0066cc;">página de contacto</span></u></a> o enviándonos una carta a la dirección mencionada al comienzo de este documento.</p>
+                    <p style="text-align: justify;"><em>Versión de 27 de enero de 2017</em></p>
+                    <p style="text-align: justify;"></p> 
+
+
+                    <ul class="pager">
+                        <li class="previous">
+                            <a href="condiciones_generales_de_uso.html">&larr; Condiciones Generales De Uso</a>
+                        </li>
+                        <li class="next">
+                            <a href="Politica_Cookies.html">Politica De Cookies &rarr;</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+
+
+            </div>
+            <!-- /.row -->
+
+            <hr>
+
+        </div>
+<footer class="footer">
+            <div class="container pie">
+                <div class="row u-is-flex">
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Empresa</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="about.html">¿Que Es eAsyMove?</a></li>
+                            <li><a href="historia.html">Esta Es Nuestra Historia</a></li>
+                            <li><a href="valores.html">Estos Son Nuestros Valores</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Compartir coche</h5>
+                        <ul class="list-unstyled">
+                            <li><a onclick="permitirAccesoOtros()">Publica viajes</a></li>
+                            <li><a href="pasajeros.html">Busca viajes</a></li>
+                            
+                            
+                        </ul>
+                    </div>
+                   
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Informacion Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="condiciones_generales_de_uso.html">Condiciones Generales De Uso</a></li>
+                            <li><a href="Politica_Privacidad.html">Politica De Privacidad</a></li>
+                            <li><a href="Politica_Cookies.html">Politica De Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="disclaimer">
+                    <div class="row">
+                        <div class="col-sm-4 hidden-xs">
+                            &copy; 2016 eAsyMove.com - All Rights Reserved
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <a href="https://www.facebook.com" class="btn btn-social-icon btn-facebook">
+                                <i class="fa fa-facebook fa-1-5x"></i>
+                            </a>
+                            <a href="http://twitter.com" class="btn btn-social-icon btn-twitter">
+                                <i class="fa fa-twitter fa-1-5x"></i>
+                            </a>
+                            <a href="http://instagram.com" class="btn btn-social-icon btn-instagram">
+                                <i class="fa fa-instagram fa-1-5x"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-4 hidden-xs">
+                            <div class="pull-right">
+                                 <a href="#" >
+                                eAsyMove&nbsp; <img src="../images/botones/favicon.PNG" alt=""/>  
+                            </a>
+                                                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+
+
+
+        <!-- /.container -->
+
+        <!-- jQuery -->
+
+        <!-- Script to Activate the Carousel -->
+        <script>
+            $('.carousel').carousel({
+                interval: 5000 //changes the speed
+            })
+        </script>
+
+        <!-------------ALERTAS EN REGISTRAR--------------->
+        <div id="alert_mal_pass_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_pass_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LA CONTRASEÑA INTRODUCIDA ES ERRONEA.</div>
+                </div>
+            </div>
+            <div id="alert_mal_pass_iguales_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_pass_iguales_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LAS CONTRASEÑAS NO COINCIDEN.</div>
+                </div>
+            </div>
+            <div id="alert_mal_nombre_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_nombre_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN SU NOMBRE, SIN NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_apellido_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_apellido_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN SU APELLIDO, SIN NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_correo_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_correo_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN EL FORMATO DEL EMAIL.</div>
+                </div>
+            </div>
+            <div id="alert_mal_numero_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_numero_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA 9 NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_vacio_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_vacio_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LOS CAMPOS NO PUEDEN ESTAR VACIOS.</div>
+                </div>
+            </div>
+
+        <!-----------------ALERTAS EN LOGIN-------------->
+            <div id="alert_mal_vacio_login" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_vacio_login').style.display = 'none',document.getElementById('idlogin').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LOS CAMPOS NO PUEDEN ESTAR VACIOS.</div>
+                </div>
+            </div>
+    </body>
+
+</html>

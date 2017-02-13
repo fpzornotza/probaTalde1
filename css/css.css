@@ -1,179 +1,345 @@
-/* The Modal (background) */
+/**-----------------------------------DISEÑO GENERAL---------------------------*/
+body{
+    background-color: #4F6783;
+}
+h1{
+    text-align: center;
+    color: white;
+}
+h4{
+     font-family: Freestyle Script;
+    font-size: 2.9em;
+    color: #59b6d5;
+    margin-top: 25px;
+}
+.titulosindex{
+    font-size: 1.5em;
+    text-align: center;
+}
+h2{
+    font-family: Freestyle Script;
+    font-size: 3.9em;
+    color: #59b6d5;
+}
+.container{
+    background-color: white;
+}
+.page-header{
+    background-color: #4F6783;
+    padding-top: 10px;
+}
+.carousel{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
 
+/*----------------------------------DISEÑO ABOUT-------------------------------*/
+#tituloabout{
+    font-size:6em;
+    font-family:Freestyle Script;
+    font-weight:bold;
+    color:#9999ff;
+}
+.parrafoabout1{
+    font-size: 1.5em;
+    text-align: center;
+    font-family: times new roman;
+}
+.parrafoabout{
+    font-size: 1.5em;
+    text-align: justify;
+    font-family: times new roman;
+    margin-left: 5%;
+    margin-right: 5%;
+
+}
+.letracapital{
+    padding: 2px;
+    line-height: 13px;
+    float:left;
+    color:#9999ff;
+    font-size:2em;
+    font-family:times new roman;
+}
+
+
+/*efecto neon*/
+.enlaceabout{
+  text-align:center;
+  font-size:2.7em;
+  margin:20px 0 20px 0;
+}
+
+.enlaceabout{
+  text-decoration:none;
+  -webkit-transition: all 0.5s;
+  -moz-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+.enlaceabout:nth-child(1) {
+    color:#6666ff;
+  
+}
+.enlaceabout:hover{
+  -webkit-animation: neon1 1.5s ease-in-out infinite alternate;
+  -moz-animation: neon1 1.5s ease-in-out infinite alternate;
+  animation: neon1 1.5s ease-in-out infinite alternate;
+}
+/*-efecto letras-*/
+@-webkit-keyframes neon1 {
+  from {
+    text-shadow: 0 0 10px #fff,
+               0 0 20px  #fff,
+               0 0 30px  #fff,
+               0 0 40px  blueviolet,
+               0 0 70px  blueviolet,
+               0 0 80px  blueviolet,
+               0 0 100px blueviolet,
+               0 0 150px blueviolet;
+  }
+  to {
+    text-shadow: 0 0 5px #fff,
+               0 0 10px #fff,
+               0 0 15px #fff,
+               0 0 20px blueviolet,
+               0 0 35px blueviolet,
+               0 0 40px blueviolet,
+               0 0 50px blueviolet,
+               0 0 75px blueviolet;
+  }
+}
+.imagen_valores{
+    width: 100%;
+    height: 450px;
+}
+.imagen_valores img{
+    width: 100%;
+    height: 90%;
+}
+/*------------------------------------EFECTO NOMBRE EMPRESA--------------------*/
+
+#nombrempresa {
+    font-size:3em;
+    font-family:Freestyle Script;
+    font-weight:bold;
+    color:#9999ff;
+}
+.parpadea {
+    animation-name: parpadeo;
+    animation-duration: 2;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+
+    -webkit-animation-name:parpadeo;
+    -webkit-animation-duration: 2s;
+    -webkit-animation-timing-function: linear;
+    -webkit-animation-iteration-count: infinite;
+}
+@-moz-keyframes parpadeo{  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@-webkit-keyframes parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+@keyframes parpadeo {  
+    0% { opacity: 1.0; }
+    50% { opacity: 0.0; }
+    100% { opacity: 1.0; }
+}
+
+/*---------------------------------LOGIN Y REGISTRAR---------------------------*/
+#logear{
+
+    width: 50%;
+    margin-left: 25%;
+    margin-top: 10%;
+}
+#registrar{
+    min-width: 200px;
+    width: 50%;
+
+    margin-left: 25%;
+    top: 5%;
+}
+.modalregistrar {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 40px;
+}
+.modallogin {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 40px;
+}
+.formulario {
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 10px;
+    background-color: activeborder;
+    border: 3px #204d74 solid ;
+    border-radius: 5px;
+}
+
+
+/*------------------------------BOTONES------------------------------*/
+/* aceptar*/
+.botonverde {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+}
+/*cancelar*/
+.cancelbtn {
+    background-color:red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100px;
+}
+/* flecha*/
+.ir-arriba {
+    display:none;
+    padding:20px;
+    position: fixed;
+    bottom:20px;
+    right:20px;
+    
+    height: 75px; 
+    z-index: 2;
+    cursor: pointer;
+}
 /* pasajero conductor */
-
 .header-text {
-position: absolute;
-top: 40%;
-left: 1.8%;
-right: auto;
-width: 96.66666666666666%;
-color: #080808;
+    position: absolute;
+    top: 40%;
+    left: 1.8%;
+    right: auto;
+    width: 96.66666666666666%;
+    color: #080808;
 }
-
 .btn-min-block {
-min-width: 170px;
-line-height: 26px;
+    min-width: 170px;
+    line-height: 26px;
 }
-
 .btn-theme {
-color: #fff;
-background-color: transparent;
-border: 2px solid #fff;
-margin-right: 15px;
+    color: #fff;
+    background-color: transparent;
+    border: 2px solid #fff;
+    margin-right: 15px;
+}
+.btn-theme:hover {
+    color: #000;
+    background-color: #fff;
+    border-color: #fff;
+}
+.cancelar{
+    background-color: red;
+    border-color: red;
+     color: white;
+}
+.cancelar:hover{
+    background-color: #cc0000;
+    border-color: #cc0000;;
+     color: white;
+}
+.crear{
+    background-color: #00cc00;
+    border-color: #00cc00;
+    color: white;
+    
+}
+.crear:hover{
+    background-color: #009900;
+    border-color:  #009900;
+     color: white;
 }
 
-.btn-theme:hover {
-color: #000;
-background-color: #fff;
-border-color: #fff;
-}
+
+
+
 
 /*prueba*/
 
 img.movimiento{
-width: 200px;
-height: 150px;
-border-radius: 20px;
+    width: 200px;
+    height: 150px;
+    border-radius: 20px;
 }
 
 /*Fin prueba*/
 
-.modalregistrar {
-display: none; /* Hidden by default */
-position: fixed; /* Stay in place */
-z-index: 1; /* Sit on top */
-left: 0;
-top: 0;
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-overflow: auto; /* Enable scroll if needed */
-background-color: rgb(0,0,0); /* Fallback color */
-background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-padding-top: 40px;
-padding-left: 1100px;
-}
-.modallogin {
-display: none; /* Hidden by default */
-position: fixed; /* Stay in place */
-z-index: 1; /* Sit on top */
-left: 0;
-top: 0;
-width: 100%; /* Full width */
-height: 100%; /* Full height */
-overflow: auto; /* Enable scroll if needed */
-background-color: rgb(0,0,0); /* Fallback color */
-background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-padding-top: 40px;
-/*padding-left: 1100px;*/
-}
+
 
 
 
 /* REGISTRARFORMULARIO*/
 
 .modal-content {
-margin: 5px auto;
-/*border: 1px solid #888;*/
-width: 320px;
-height: 300px;
+    margin: 5px auto;
+    /*border: 1px solid #888;*/
+    width: 320px;
+    height: 300px;
 }
 
-/* boton cerrar */
 
-.close {
-position: absolute;
-right: 25px;
-top: 0;
-color: #000;
-font-size: 35px;
-font-weight: bold;
-}
-
-/* Close button on hover */
-
-.close:hover,
-.close:focus {
-color: red;
-cursor: pointer;
-}
 
 /* Zoom Animacion */
 
 .animate {
--webkit-animation: animatezoom 0.6s;
-animation: animatezoom 0.6s
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
 }
 @-webkit-keyframes animatezoom {
-from {-webkit-transform: scale(0)}
-to {-webkit-transform: scale(1)}
+    from {-webkit-transform: scale(0)}
+    to {-webkit-transform: scale(1)}
 }
 @keyframes animatezoom {
-from {transform: scale(0)}
-to {transform: scale(1)}
+    from {transform: scale(0)}
+    to {transform: scale(1)}
 }
 
 /* input */
 
 input[type=text], input[type=password], input[type=email] , input[type=tel] {
-width: 100%;
-padding: 12px 20px;
-margin: 8px 0;
-display: inline-block;
-border: 1px solid #ccc;
-box-sizing: border-box;
+    width: 100%;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+    border-radius: 8px;
 }
 
-/* style botones */
 
-.botonverde {
-background-color: #4CAF50;
-color: white;
-padding: 14px 20px;
-margin: 8px 0;
-border: none;
-cursor: pointer;
-width: 100px;
-}
-
-/* boton cerrar */
-
-.cancelbtn {
-background-color:red;
-color: white;
-padding: 14px 20px;
-margin: 8px 0;
-border: none;
-cursor: pointer;
-width: 100px;
-}
-
-.botonprincipio{
-background-color:black;
-color: white;
-padding: 14px 20px;
-border: none;
-cursor: pointer;
-}
-
-/* padding containers */
-
-.formulario {
-padding-right: 16px;
-padding-left: 16px;
-padding-top: 10px;
-background-color: white;
-border: 5px black solid ;
-}
-
-h4, h1{
-    text-align: center;
-}
-h2{
-    font-family: Freestyle Script;
-    font-size: 3.9em;
-    color: blanchedalmond;
-}
 .panel-default > .panel-heading{
     background-color: #C5DFFA;
 }
@@ -183,48 +349,14 @@ h2{
 .panel-body{
     background-color: #E2E4E6;
 }
-body{
-    background-image: url(../images/fondo-claro.jpg);
-}
-footer{
-    background-color: yellow;
-}
+
+
+
 /*///////DISEÑO DE PERFIL////////*/
 .cajaperfil{
     width: 100%;
 }
-table {
- 
-    margin: 45px;    
-    width: 90%; 
-   
-   }
 
-th {     
-    font-size: 1.5em;     
-   text-decoration: underline;
-    font-weight: bold;     
-    padding: 11px; 
-    background: #b9c9fe;
-    border-top: 4px ridge #aabcfe;    
-    border-bottom: 1px ridge #fff; 
-    color: #039; }
-.foto{
-    background-color: #6699ff;
-}
-td {  
-    font-family: Harlow Solid;
-    font-size: 1.2em;  
-    text-align: center;
-    padding: 8px;     
-    background: #e8edff;     
-    border-bottom: 1px ridge #fff;
-    color: #669;    
-    }
-
-tr:hover td { 
-    background: #d0dafd; 
-    color: #339; }
 
 .nombre_usuario_nav{
     color: white;
@@ -235,12 +367,12 @@ tr:hover td {
 }
 .visualizacionNuevaContrasena{
     display: none;
-    
+
 }
 
 .panel-body{
     text-align: center;
-    
+
 }
 
 textarea{
@@ -248,21 +380,387 @@ textarea{
     height: 130px;
 }
 
-
-
-/*///pie de pagina*/
+/*-------------------------------------FOOTER---------------------------------*/
 
 footer{
+    background-color: #2F3A49;
+    color: whitesmoke;
+    padding-bottom: 35px;
 
-background-color: #2F3A49;
-margin-bottom: 0px;
-color: whitesmoke;
-padding-bottom: 35px;
 }
-.container2{
-    width: 1170px;
+
+.footer{
+    margin-top: 50px; 
 }
 .nombre_logeado{
     color: #6699ff;
+
+}
+
+#nav_logeado,#nav_no_logeado{
+    display: none;
+}
+
+.pie{
+    background-color: #2F3A49;
+}
+/*---------------------------------------CONTACTOS-------------------------*/
+
+.c_formulario{
+    margin-top: 25px;
+
+}
+.c_formulario h3{
+    text-align: center;
+}
+.c_detalles{
+    text-align: left;
+    padding-left:30% ;
+    margin-top: 15px;
+}
+.detalles h3{
+    padding-bottom: 22px;
+
+}
+.mapa{
+    text-align: center;
+    margin-top: 25px;
+}
+#message{
+    width: 100%;
+}
+.c_imagen{
+    text-align: left;
+    padding-left:10% ;
+    margin-top: 15px;
+    width: 90%;
+    height: 280px;
+}
+.c_input{
+    padding: 8px 20px;
+}
+
+
+
+/*perfil usuarios*/
+
+table { 
+    width: 100%; 
+    border-collapse: collapse; 
+}
+/* Zebra striping */
+tr:nth-of-type(odd) { 
+    background: #eee; 
+}
+th { 
+    background: #333; 
+    color: white; 
+    font-weight: bold; 
+}
+td, th { 
+    padding: 6px; 
+    border: 1px solid #ccc; 
+    text-align: left; 
+}
+.descripcion{
+    width: 100%;
+    resize: vertical;
+}
+.foto{
+    text-align: center;
+}
+#aceptar_perfil{
+    text-align: center;
+}
+
+@media 
+only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px)  {
+
+    /* Force table to not be like tables anymore */
+    table, thead, tbody, th, td, tr { 
+        display: block; 
+    }
+
+    /* Hide table headers (but not display: none;, for accessibility) */
+    thead tr { 
+        position: absolute;
+        top: -9999px;
+        left: -9999px;
+    }
+
+    tr { border: 1px solid #ccc; }
+
+    td { 
+        /* Behave  like a "row" */
+        border: none;
+        border-bottom: 1px solid #eee; 
+        position: relative;
+        padding-left: 50%; 
+    }
+
+    td:before { 
+        /* Now like a table header */
+        position: absolute;
+        /* Top/left values mimic padding */
+        top: 6px;
+        left: 6px;
+        width: 45%; 
+        padding-right: 10px; 
+        white-space: nowrap;
+    }
+
+
+}
+
+/*------------------------------CSS CONDUCTOR------------------------------------*/
+
+
+
+#formConductor input[type="text"],
+#formConductor input[type="email"],
+#formConductor input[type="tel"],
+#formConductor input[type="url"],
+#formConductor textarea,
+#formConductor button[type="submit"] {
+    font: 400 12px/16px "Roboto", Helvetica, Arial, sans-serif;
+}
+
+#formConductor {
+    background: #F9F9F9;
+    padding: 25px;
+    margin: 15px 0;
+    box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
+    display: none;
+}
+
+#formConductor h3 {
+    display: block;
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 10px;
+}
+
+#formConductor h4 {
+    margin: 5px 0 15px;
+    display: block;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+fieldset {
+    border: medium none !important;
+    margin: 0 0 10px;
+    min-width: 100%;
+    padding: 0;
+    width: 100%;
+}
+
+
+#formConductor input[type="email"],
+#formConductor input[type="tel"],
+#formConductor input[type="url"],
+#formConductor textarea {
+    width: 100%;
+    border: 1px solid #ccc;
+    background: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+}
+
+#formConductor input[type="text"]:hover,
+#formConductor input[type="email"]:hover,
+#formConductor input[type="tel"]:hover,
+#formConductor input[type="url"]:hover,
+#formConductor textarea:hover {
+    -webkit-transition: border-color 0.3s ease-in-out;
+    -moz-transition: border-color 0.3s ease-in-out;
+    transition: border-color 0.3s ease-in-out;
+    border: 1px solid #aaa;
+}
+
+#formConductor textarea {
+    height: 100px;
+    max-width: 100%;
+    resize: none;
+}
+
+#formConductor button[type="submit"] {
+    cursor: pointer;
+    width: 100%;
+    border: none;
+    background: #4CAF50;
+    color: #FFF;
+    margin: 0 0 5px;
+    padding: 10px;
+    font-size: 15px;
+}
+
+#formConductor button[type="submit"]:hover {
+    background: #43A047;
+    -webkit-transition: background 0.3s ease-in-out;
+    -moz-transition: background 0.3s ease-in-out;
+    transition: background-color 0.3s ease-in-out;
+}
+
+#formConductor button[type="submit"]:active {
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+
+
+#formConductor input:focus,
+#formConductor textarea:focus {
+    outline: 0;
+    border: 1px solid #aaa;
+}
+
+::-webkit-input-placeholder {
+    color: #888;
+}
+
+:-moz-placeholder {
+    color: #888;
+}
+
+::-moz-placeholder {
+    color: #888;
+}
+
+:-ms-input-placeholder {
+    color: #888;
+}
+
+/*Formulario conductor*/
+.inputErdia{
+    width: 50%;
+}
+#paradaDiv2, #paradaDiv3, #paradaDiv4, #paradaDiv5, #paradaDiv6{
+    display: none;
+}
+.editarParadas{
+    display: none;
+}
+#botonesCambiar{
+    display: none;
+}
+
+/*-------------------Eliminar usuario-------------------*/
+#confirmar_eliminar_dentro{
+ 
+    z-index: 1;  
+    padding: 1%;
+    margin:auto;
+  margin-top: 15%;
+    left: 0;
+    top: 0;
+    width: 30%;
+    text-align: center;
+    border: 3px solid black;
+    border-radius: 10px;
+    overflow: auto; 
+    background-color:#cccccc;
+    box-shadow: 7px 7px 4px white;
+
+}
+
+.hover:hover{
     
+    color: #333333
+    
+}
+.menu_hover{
+    background-color: whitesmoke;
+}
+/*--------------pasajero-------------------*/
+#viajesReservados{
+    display:none
+}
+
+/*----------------RELOJ----------------*/
+h7{
+  
+top: 50px;
+  letter-spacing: 1.5px;
+  font-size: 1em;
+  color: #6699ff;
+}
+/*Responsive*/
+@media (max-width: 425px) {
+  h7{font-size:300%;}
+}
+.reloj{
+    margin-top: 15px;
+    margin-left: -30px;
+}
+.especial{
+    margin-top: 0px;
+}
+
+.estilo_combo{
+    background: whitesmoke;
+     border: 1.5px solid black;
+     font-size: 14px;
+     height: 30px;
+     padding: 5px;
+     width: 150px;
+     border-radius: 5px;
+}
+
+
+
+/*-----------estilo alertas---------*/
+.alertas_error {
+    
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 10px;
+    border: 3px #B40431 solid ;
+    border-radius: 5px;
+    width: 50%;
+    margin: auto;
+    margin-top: 300px;
+}
+.alertas_perfil {
+    
+    padding-right: 16px;
+    padding-left: 16px;
+    padding-top: 10px;
+    border: 3px #B40431 solid ;
+    border-radius: 5px;
+    width: 50%;
+    margin: auto;
+    margin-top: 150px;
+}
+#misAlertas{
+    display: none;
+}
+.modalAlertas {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    padding-top: 40px;
+}
+
+/*-----------tabla de paradas------------*/
+.tablaparadas td{
+    text-align: center;
+    border: 1px solid #666600;
+}
+.tablaparadas{
+    border: 4px solid #4F6783;
+}
+
+.telefonoVer{
+    display: none;
+}
+.modalAlertas{
+    display: none;
 }

@@ -9,12 +9,6 @@ miApp.controller('miControlador', function ($scope, $http) {
                // alert($scope.usuarios);
                
             });
-     
-            
-//            .error(function () {
-//
-//                $scope.alumnos = "error in fetching data";
-//            });
  });
  
 

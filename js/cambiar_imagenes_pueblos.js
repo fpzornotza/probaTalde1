@@ -6,40 +6,40 @@
 
 
 var imgbusturialdea = new Array(
-        'images/busturialdea1.jpg',
-        'images/busturialdea2.jpg',
-        'images/busturialdea3.jpg'
+        'images/zonas/busturialdea/busturialdea1.jpg',
+        'images/zonas/busturialdea/busturialdea2.jpg',
+        'images/zonas/busturialdea/busturialdea3.jpg'
 
         );
 var imguribe = new Array(
-        'images/uribe1.png',
-        'images/uribe2.jpg',
-        'images/uribe3.jpg'
+        'images/zonas/uribe/uribe1.png',
+        'images/zonas/uribe/uribe2.jpg',
+        'images/zonas/uribe/uribe3.jpg'
 
         );
 var imgbilbao = new Array(
-        'images/bilbao1.jpg',
-        'images/bilbao2.jpg',
-        'images/bilbao3.jpg'
+        'images/zonas/bilbao/bilbao1.jpg',
+        'images/zonas/bilbao/bilbao2.jpg',
+        'images/zonas/bilbao/bilbao3.jpg'
 
         );
 
 var imgdurangoaldea = new Array(
-        'images/durango1.jpg',
-        'images/durango2.jpg',
-        'images/durango3.jpg'
+        'images/zonas/durangesado/durango1.jpg',
+        'images/zonas/durangesado/durango2.jpg',
+        'images/zonas/durangesado/durango3.jpg'
 
         );
 var imgleaartibai = new Array(
-        'images/leartibai1.jpg',
-        'images/leartibai2.jpg',
-        'images/leartibai3.jpg'
+        'images/zonas/leartibai/leartibai1.jpg',
+        'images/zonas/leartibai/leartibai2.jpg',
+        'images/zonas/leartibai/leartibai3.jpg'
 
         );
 var imgarratia = new Array(
-        'images/arratia1.jpg',
-        'images/arratia2.jpg',
-        'images/arratia3.jpg'
+        'images/zonas/arratia-nerbioi/arratia1.jpg',
+        'images/zonas/arratia-nerbioi/arratia2.jpg',
+        'images/zonas/arratia-nerbioi/arratia3.jpg'
 
         );
 

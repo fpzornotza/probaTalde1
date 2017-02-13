@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="miApp" ng-controller="miControlador">
 
     <head>
 
@@ -8,32 +8,44 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="description" content="">
         <meta name="author" content="">
+        <link rel="icon" type="image/png" href="images/botones/favicon.PNG"/>
 
         <title>eAsyMove</title>
 
-                <!-- LIBRERIAS------>
+        <!-- LIBRERIAS------>
         <link href="css/bootstrap.min.css" rel="stylesheet">
         <link href="css/modern-business.c ss" rel="stylesheet">
+        <link href="css/bootstrap-social.css" rel="stylesheet" type="text/css"/>
         <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
         <link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/modern-business.css" type="text/css">
         <script src="js/lib/angular.min.js" type="text/javascript"></script>
         <script src="js/lib/jquery.js" type="text/javascript"></script>
         <script src="js/lib/bootstrap.min.js" type="text/javascript"></script>
-        
-        
-             <!-- NUESTROS FICHEROS---->
+
+
+        <!-- NUESTROS FICHEROS---->
         <link href="css/css.css" rel="stylesheet" type="text/css"/>
+        <script src="js/reloj.js" type="text/javascript"></script>
+        
         <script src="js/cambiar_imagenes_pueblos.js" type="text/javascript"></script>
         <script src="js/registro_login.js" type="text/javascript"></script>
-
-
+        <script src="js/comprobar_sesion_index.js" type="text/javascript"></script>
+        <script src="js/conductor.js" type="text/javascript"></script>
+       
+        <script src="js/subir_arriba.js" type="text/javascript"></script>
+        <script src="js/pasajeros.js" type="text/javascript"></script>
+         <script src="js/perfil_usuario_index.js" type="text/javascript"></script>
     </head>
 
     <body>
+        <!------===================================MENU PAGINA + REGISTRO + LOGIN============================-------->
+        <div class="ir-arriba ">
+            <img src="images/botones/flecha_subir.png" alt=""/>
+        </div>
 
-        <!-- Navigation -->
-        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-            <div class="container">
+        <nav class="navbar navbar-inverse navbar-fixed-top pie" role="navigation">
+            <div class="container pie">
                 <!-- Brand and toggle get grouped for better mobile display -->
                 <div class="navbar-header">
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
@@ -42,170 +54,185 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </button>
-                    <a class="navbar-brand" href="index.html">NOMBRE EMPRESA</a>
+                    <a class="navbar-brand parpadea" id="nombrempresa" href="index.html">eAsyMove</a>
                 </div>
                 <!-- Collect the nav links, forms, and other content for toggling -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav navbar-right">
                         <li>
-                            <a href="about.html">About</a>
+                            <a href="html/about.html">About</a>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zonas <b class="caret"></b></a>
                             <ul class="dropdown-menu">
                                 <li>
-                                    <a href="portfolio-1-col.html">DURANGUESADO</a>
+                                    <a onclick="ordenarPorZonas('DURANGUESADO')">DURANGUESADO</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-2-col.html">GRAN BILBAO</a>
+                                    <a onclick="ordenarPorZonas('BILBAO')">GRAN BILBAO</a>
+                                </li>
+                                <li onclick="ordenarPorZonas('ARRATIA')">ARRATIA-NERBIOI</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-3-col.html">ARRATIA-NERBIOI</a>
+                                    <a onclick="ordenarPorZonas('LEAARTIBAI')">LEA-ARTIBAI</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-4-col.html">LEA-ARTIBAI</a>
+                                    <a onclick="ordenarPorZonas('BUSTURIALDEA')">BUSTURIALDEA</a>
                                 </li>
                                 <li>
-                                    <a href="portfolio-item.html">BUSTURIALDEA</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio-item.html">URIBE</a>
+                                    <a onclick="ordenarPorZonas('URIBE')">URIBE</a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="contacto.html">Contact</a>
+                            <a href="html/contacto.html">Contacto</a>
+                        </li>
+                       
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" >
+                        <div id="nav_logeado">
+                            <li class="nombre_usuario_nav" ng-repeat="usuario in usuarios ">
+                                <a href="html/perfil_usuario1.html">Has entrado como <span class="nombre_logeado">{{usuario.usuario}}</span></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+                                <ul class="dropdown-menu menu_hover">
+                                    <li>
+                                        <a href="html/cambiar_perfil_usuario.html"><img width="25" height="20" src="images/configuracion/config.png" alt=""/>&nbsp;&nbsp;<span class="hover">Modificar Perfil</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="html/perfil_usuario1.html"><img width="25" height="20" src="images/configuracion/Users.png" alt=""/>&nbsp;&nbsp;<span class="hover">Ver Perfil</span></a>
+
+                                    </li>
+                                    <li>
+                                        <a href="#" class="salirUsuarioIndex"><img width="25" height="20" src="images/configuracion/salir.png" alt=""/>&nbsp;&nbsp;<span class="hover ">Cerrar sesion</span></a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+
+                        <div id="nav_no_logeado">
+                            <li>
+                                <a onclick="abrirRegistrar()" id="abrirRegistrar" href="#">Registrar</a>
+                            </li>
+                            <li>
+                                <a onclick="abrirLogin()" id="abrirLogin" href="#">Entrar</a>
+                            </li>
+                            <li>
+                                <div id="id02" class="modalregistrar" >
+
+                                    <form id="login" method="POST" action="">
+
+                                        <div class="formulario" id="registrar" >
+                                            <span onclick="document.getElementById('id02').style.display = 'none'" 
+                                                  class="close" title="Close Modal">&times;</span>
+                                            <label><b>Usuario:</b></label>
+                                            <input type="text" placeholder="Nombre de usuario" class="c_input" id="usuario">
+
+                                            <label><b>Nombre:</b></label>
+                                            <input type="text" placeholder="Nombre" class="c_input" id="nombre">
+
+                                            <label><b>Apellido:</b></label>
+                                            <input type="text" placeholder="Apellido" class="c_input" id="apellido">
+
+                                            <label><b>Contraseña:</b></label>
+                                            <input type="password" placeholder="Contraseña" class="c_input" id="contrasena">
+
+                                            <label><b>Repita Contraseña:</b></label>
+                                            <input type="password" placeholder="Confirmar contraseña" class="c_input" id="contrasena1">
+
+                                            <label><b>Correo:</b></label>
+                                            <input type="email" placeholder="e-mail" class="c_input" id="correo"><br>
+
+                                            <label><b>Sexo:</b></label>
+                                            <select id="sexo" class="estilo_combo">
+                                                <option  value="masculino" selected="">Masculino</option>
+                                                <option  value="femenino">Femenino</option>
+
+                                            </select> 
+                                            <label><b>Tienes Coche:</b></label>
+                                            <input type="checkbox" value="0" id="coche"/>
+                                            <br/>
+                                            <br/>
+
+                                            <label><b>Telefono:</b></label>
+                                            <input type="tel" id="telefono" class="c_input" placeholder=" 000 00 00 00">
+
+
+
+                                            <!--<button type="submit" onsubmit="realizaProceso($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(), $('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())" >registrar</button>-->
+                                            <input type="button" id="registrar_usu_index" value="Registrar" class="botonverde"/>
+                                            <!--   parametros_requeridos_nok($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(),$('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())-->
+
+
+
+                                            <button type="button" onclick="ocultarRegistro()" class="ocultarRegistro cancelbtn">Cancelar</button>
+                                        </div>
+                                    </form>
+                                    Resultado: <span id="resultado">0</span>
+                                </div>
+
+                                <div id="idlogin" class="modallogin">
+                                    <!-- Modal Content -->
+                                    <form action=""   method="POST" class=" animate">
+
+
+                                        <div class="formulario" id="logear">
+                                            <span onclick="document.getElementById('idlogin').style.display = 'none'" 
+                                                  class="close" title="Close Modal">&times;</span>
+                                            <label><b>Usuario</b></label>
+                                            <input type="text" placeholder="Usuario" class="c_input" id="loginUsuario" >
+
+                                            <label><b>Contraseña</b></label>
+                                            <input type="password" placeholder="Contraseña" class="c_input" id="loginContrasena" >
+
+                                            <span id="logeado_error">Usuario o contraseña no valido.<br>
+                                                                     El usuario tiene que estar verificado.
+                                            </span>
+                                            <br>
+
+                                            <input type="button" id="logear_usu_index" value="Acceder" class="botonverde"/>
+
+
+                                            <button type="button" onclick="ocultarLogin()" class="ocultarLogin cancelbtn">Cancelar</button>
+                                            <input type="checkbox" checked="checked"> Remember me<br>
+                                            <span class="psw"> <a href="#">He olvidado mi contraseña?</a></span>
+                                        </div>
+
+                                        <div class="container" style="background-color:#f1f1f1">
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </div>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">ESP <b class="caret"></b></a>
+                            <ul class="dropdown-menu menu_hover">
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">Euskera</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">Español</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">English</span></a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="portfolio-1-col.html">1 Column Portfolio</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio-2-col.html">2 Column Portfolio</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio-3-col.html">3 Column Portfolio</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio-4-col.html">4 Column Portfolio</a>
-                                </li>
-                                <li>
-                                    <a href="portfolio-item.html">Single Portfolio Item</a>
-                                </li>
+                            <ul class="reloj">
+
+                                <h7 id="tx"></h7><p id="title"></p>
+
+
                             </ul>
                         </li>
 
+
                     </ul>
-                    <ul class="nav navbar-nav navbar-right">
-                        <li>
-                            <a onclick="abrirRegistrar()" id="abrirRegistrar" href="#">Registrar</a>
-                        </li>
-                        <li>
-                            <a onclick="abrirLogin()" id="abrirLogin" href="#">Entrar</a>
-                        </li>
-                        <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown"><img width="30" height="20" src="images/espana.png" alt=""/> <b class="caret"></b></a>
-                            <ul class="dropdown-menu">
-                                <li>
-                                    <a href="portfolio-1-col.html"> &nbsp;&nbsp;&nbsp; <img width="30" height="20" src="images/ikurrina.png" alt=""/>&nbsp;&nbsp;Euskera </a>
 
-                                </li>
-                                <li>
-                                    <a href="index.html"> &nbsp;&nbsp;&nbsp; <img width="30" height="20" src="images/espana.png" alt=""/>&nbsp;&nbsp;Español</a>
-                                </li>
-                                  <li>
-                                    <a href="index.html"> &nbsp;&nbsp;&nbsp; <img width="30" height="20" src="images/gb.png" alt=""/>&nbsp;&nbsp;Ingles</a>
-                                </li>
-
-                            </ul>
-                        </li>
-                        <li>
-                            <div id="id02" class="modalregistrar" >
-
-                                <form id="login" class="modal-content animate" method="POST" action="">
-
-                                    <div class="formulario">
-                                        <label><b>Usuario:</b></label>
-                                        <input type="text" placeholder="Nombre de usuario" id="usuario">
-
-                                        <label><b>Nombre:</b></label>
-                                        <input type="text" placeholder="Nombre" id="nombre">
-
-                                        <label><b>Apellido:</b></label>
-                                        <input type="text" placeholder="Apellido" id="apellido">
-
-                                        <label><b>Contraseña:</b></label>
-                                        <input type="password" placeholder="Contraseña" id="contrasena">
-
-                                        <label><b>Repita Contraseña:</b></label>
-                                        <input type="password" placeholder="Confirmar contraseña" id="contrasena1">
-
-                                        <label><b>Correo:</b></label>
-                                        <input type="email" placeholder="e-mail" id="correo"><br>
-
-                                        <label><b>Sexo:</b></label>
-                                        <select id="sexo">
-                                            <option  value="masculino" selected="">Masculino</option>
-                                            <option  value="femenino">Femenino</option>
-
-                                        </select> 
-
-
-                                        <br/>
-                                        <br/>
-
-                                        <label><b>Telefono:</b></label>
-                                        <input type="tel" id="telefono" placeholder=" 000 00 00 00">
-
-
-
-                                        <!--<button type="submit" onsubmit="realizaProceso($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(), $('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())" >registrar</button>-->
-                                        <input type="button" onclick="realizaProceso($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(), $('#contrasena1').val(), $('#correo').val(), $('#sexo').val(), $('#telefono').val());" value="Registrar" id="boton_registrar" class="botonverde"/>
-                                        <!--   parametros_requeridos_nok($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(),$('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())-->
-
-
-
-                                        <button type="button" onclick="ocultarRegistro()" class="ocultarRegistro cancelbtn">Cancelar</button>
-                                    </div>
-                                </form>
-                                Resultado: <span id="resultado">0</span>
-                            </div>
-
-                            <div id="idlogin" class="modallogin">
-                                <span onclick="document.getElementById('idlogin').style.display = 'none'" 
-                                      class="close" title="Close Modal">&times;</span>
-
-                                <!-- Modal Content -->
-                                <form action="" method="POST" class=" animate">
-
-
-                                    <div class="formulario">
-                                        <label><b>Usuario</b></label>
-                                        <input type="text" placeholder="Usuario" id="loginUsuario" >
-
-                                        <label><b>Contraseña</b></label>
-                                        <input type="password" placeholder="Contraseña" id="loginContrasena" >
-
-                                        <span id="logeado_error">Usuario o contraseña no valido</span>
-                                        <br>
-
-                                        <input type="button" id="logear_usu" value="Acceder" class="botonverde"/>
-
-
-                                        <button type="button" onclick="ocultarLogin()" class="ocultarLogin cancelbtn">Cancelar</button>
-                                        <input type="checkbox" checked="checked"> Remember me<br>
-                                        <span class="psw"> <a href="#">He olvidado mi contraseña?</a></span>
-                                    </div>
-
-                                    <div class="container" style="background-color:#f1f1f1">
-
-                                    </div>
-                                </form>
-                            </div>
-                        </li>
-                    </ul>
                 </div>
                 <!-- /.navbar-collapse -->
             </div>
@@ -224,19 +251,19 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner">
                 <div class="item active">
-                    <div class="fill" style="background-image:url('images/4img.jpg');"></div>
+                    <div class="fill" style="background-image:url('images/slide/4img.jpg');"></div>
                     <div class="carousel-caption">
                         <h2>Donde quieras ir con eAsyMove has de ir</h2>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="fill" style="background-image:url('images/5img.jpg');"></div>
+                    <div class="fill" style="background-image:url('images/slide/5img.jpg');"></div>
                     <div class="carousel-caption">
                         <h2>Donde quieras ir con eAsyMove has de ir</h2>
                     </div>
                 </div>
                 <div class="item">
-                    <div class="fill" style="background-image:url('images/6img.jpg');"></div>
+                    <div class="fill" style="background-image:url('images/slide/6img.jpg');"></div>
                     <div class="carousel-caption">
                         <h2>Donde quieras ir con eAsyMove has de ir</h2>
                     </div>
@@ -245,8 +272,8 @@
             <div class="header-text hidden-xs">
                 <div class="col-md-12 text-center">
                     <div class="">
-                        <a class="btn btn-theme btn-min-block" href="#">Conductor</a>
-                        <a class="btn btn-theme btn-min-block" href="#">Pasajero</a>
+                        <a id="boton_conductor" class="btn btn-theme btn-min-block" onclick="permitirAcceso()">Conductor</a>
+                        <a class="btn btn-theme btn-min-block" href="html/pasajeros.html">Pasajero</a>
                     </div>
                 </div>
             </div>
@@ -259,6 +286,10 @@
                 <span class="icon-next"></span>
             </a>
         </header>
+        
+        
+        
+        <!------------==========================================CONTENIDO PAGINA=======================================------------->
 
         <!-- Page Content -->
         <div class="container">
@@ -274,244 +305,210 @@
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-check"></i> Duranguesado</h4>
+                            <h5 class="titulosindex"><i class="fa fa-fw fa-check"></i> Duranguesado</h5>
                         </div>
                         <div class="panel-body">
-                            <img class="movimiento" src="images/durango1.jpg" id="dueangoaldea"><br><br>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <img class="movimiento" src="images/zonas/durangesado/durango1.jpg" id="dueangoaldea"><br><br>
+                            <a class="btn btn-default" onclick="ordenarPorZonas('DURANGUESADO')">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-check"></i> Gran Bilbao</h4>
+                            <h5 class="titulosindex"><i class="fa fa-fw fa-check"></i> Gran Bilbao</h5>
                         </div>
                         <div class="panel-body">
-                            <img class="movimiento" src="images/bilbao1.jpg" id="bilbao"><br><br>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <img class="movimiento" src="images/zonas/bilbao/bilbao1.jpg" id="bilbao"><br><br>
+                            <a  class="btn btn-default" onclick="ordenarPorZonas('BILBAO')">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-check"></i> Uribe</h4>
+                            <h5 class="titulosindex"><i class="fa fa-fw fa-check"></i> Uribe</h5>
                         </div>
                         <div class="panel-body">
-                            <img class="movimiento" src="images/uribe1.png" id="uribe"><br><br>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <img class="movimiento" src="images/zonas/uribe/uribe1.png" id="uribe"><br><br>
+                            <a class="btn btn-default" onclick="ordenarPorZonas('URIBE')">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-check"></i> Busturialdea</h4>
+                            <h5 class="titulosindex"><i class="fa fa-fw fa-check"></i> Busturialdea</h5>
                         </div>
                         <div class="panel-body">
-                            <img class="movimiento" src="images/busturialdea1.jpg" id="busturialdea"><br><br>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <img class="movimiento" src="images/zonas/busturialdea/busturialdea1.jpg" id="busturialdea"><br><br>
+                            <a class="btn btn-default" onclick="ordenarPorZonas('BUSTURIALDEA')">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-check"></i> Lea-Artibai</h4>
+                            <h5 class="titulosindex"><i class="fa fa-fw fa-check"></i> Lea-Artibai</h5>
                         </div>
                         <div class="panel-body">
-                            <img class="movimiento" src="images/leartibai1.jpg" id="leaartibai"><br><br>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <img class="movimiento" src="images/zonas/leartibai/leartibai1.jpg" id="leaartibai"><br><br>
+                            <a class="btn btn-default" onclick="ordenarPorZonas('LEAARTIBAI')">Learn More</a>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            <h4><i class="fa fa-fw fa-check"></i> Arratia-Nerbioi</h4>
+                            <h5 class="titulosindex"><i class="fa fa-fw fa-check"></i> Arratia-Nerbioi</h5>
                         </div>
                         <div class="panel-body">
-                            <img class="movimiento" src="images/arratia1.jpg" id="arratia"><br><br>
-                            <a href="#" class="btn btn-default">Learn More</a>
+                            <img class="movimiento" src="images/zonas/arratia-nerbioi/arratia1.jpg" id="arratia"><br><br>
+                            <a class="btn btn-default" onclick="ordenarPorZonas('ARRATIA')">Learn More</a>
                         </div>
                     </div>
                 </div>
 
             </div>
-
-            <!-- /.row -->
-
-            <!-- Portfolio Section -->
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="page-header">Portfolio Heading</h2>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="portfolio-item.html">
-                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="portfolio-item.html">
-                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="portfolio-item.html">
-                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="portfolio-item.html">
-                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="portfolio-item.html">
-                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                    </a>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <a href="portfolio-item.html">
-                        <img class="img-responsive img-portfolio img-hover" src="http://placehold.it/700x450" alt="">
-                    </a>
-                </div>
-            </div>
-            <!-- /.row -->
-
-            <!-- Features Section --
-            <div class="row">
-                <div class="col-lg-12">
-                    <h2 class="page-header">Modern Business Features</h2>
-                </div>
-                <div class="col-md-6">
-                    <p>The Modern Business template by Start Bootstrap includes:</p>
-                    <ul>
-                        <li><strong>Bootstrap v3.3.7</strong>
-                        </li>
-                        <li>jQuery v1.11.1</li>
-                        <li>Font Awesome v4.2.0</li>
-                        <li>Working PHP contact form with validation</li>
-                        <li>Unstyled page elements for easy customization</li>
-                        <li>17 HTML pages</li>
-                    </ul>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis, omnis doloremque non cum id reprehenderit, quisquam totam aspernatur tempora minima unde aliquid ea culpa sunt. Reiciendis quia dolorum ducimus unde.</p>
-                </div>
-                <div class="col-md-6">
-                    <img class="img-responsive" src="http://placehold.it/700x450" alt="">
-                </div>
-            </div>
-            </div>
-            <!-- /.row -->
 
             <hr>
-
-            <!-- Call to Action Section --
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-8">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Molestias, expedita, saepe, vero rerum deleniti beatae veniam harum neque nemo praesentium cum alias asperiores commodi.</p>
-                    </div>
-                    <div class="col-md-4">
-                        <a class="btn btn-lg btn-default btn-block" href="#">Call to Action</a>
-                    </div>
-                </div>
-            </div>
-    
-            <hr>
-    
-            <!-- Footer -->
         </div>
-    <footer class="footer">
-  <div class="container">
-    <div class="row u-is-flex">
 
-      <div class="col-md-2 col-xs-12">
-          <div class="badges xl-space-bottom">
-            <h5>Apps gratuitas</h5>
-            <a href="http://itunes.apple.com/es/app/amovens/id463514710" class="badge-appstore badge-outline" target="_blank">
-              <i class="fa fa-apple"></i><span class="badge-label">iPhone</span>
-            </a>
-            <a href="http://play.google.com/store/apps/details?id=com.amovens.pruebandroid" class="badge-playstore badge-outline" target="_blank">
-              <i class="fa fa-android"></i><span class="badge-label">Android</span>
-            </a>
-          </div>
-      </div>
-
-      <div class="col-md-2 col-sm-3 col-xs-6 mt4 mt0-md">
-        <h5>Empresa</h5>
-        <ul class="list-unstyled">
-            <li><a href="/press">Prensa</a></li>
-            <li><a href="http://blog.amovens.com">Blog</a></li>
-            <li><a href="http://blog.amovens.com/empleo/">Empleo</a></li>
-          <li><a href="/support">Ayuda</a></li>
-        </ul>
-      </div>
-
-      <div class="col-md-2 col-sm-3 col-xs-6 mt4 mt0-md">
-        <h5>Compartir coche</h5>
-        <ul class="list-unstyled">
-          <li><a href="/how/drivers">Publica viajes</a></li>
-          <li><a href="/how/passengers">Busca viajes</a></li>
-          <li><a href="/rideshare/safety">Confianza y seguridad</a></li>
-            <li><a href="/rules">Reglas</a></li>
-            <li><a href="/compartir-coche">Rutas populares</a></li>
-        </ul>
-      </div>
-
-        <div class="col-md-2 col-sm-3 col-xs-6 mt4 mt0-md">
-          <h5>Alquiler de coches</h5>
-          <ul class="list-unstyled">
-            <li><a href="/rental/overview">Cómo funciona</a></li>
-            <li><a href="/rental/owner">Publica tu coche</a></li>
-            <li><a href="/rental/renter">Alquila coches</a></li>
-            <li><a href="/rental/safety">Confianza y seguridad</a></li>
-              <li><a href="/rental/insurance">Seguro</a></li>
-          </ul>
-        </div>
-      <div id="latest" class="col-md-4 col-sm-3 col-xs-6 mt4 mt0-md">
-        <h5>Ultimas entradas del blog</h5>
-        <div id="latest-blog" class="pr3 pr0-md" data-feed-url=http://www.amovens.com/blog/feed/></div>
-      </div>
-    </div>
-
-    <div class="disclaimer">
-      <div class="row">
-        <div class="col-sm-4 hidden-xs">
-          &copy; 2016 eAsyMove
-          <a class="faded" href="/terms">Condiciones</a>
+        <!------------------------===============================PIE=================================--------->
         
-        </div>
-        <div class="col-sm-4 text-center">
-          <a href="https://www.facebook.com" class="btn-link">
-            <i class="fa fa-facebook fa-1-5x"></i>
-          </a>
-          <a href="http://twitter.com" class="btn-link">
-            <i class="fa fa-twitter fa-1-5x"></i>
-          </a>
-          <a href="http://instagram.com" class="btn-link">
-            <i class="fa fa-instagram fa-1-5x"></i>
-          </a>
-        </div>
-        <div class="col-sm-4 hidden-xs">
-          <div class="pull-right">
-              <i class="fa fa-cc-visa fa-1-5x md-space-right" title="VISA"></i>
-              <i class="fa fa-cc-mastercard fa-1-5x" title="Mastercard"></i>
-          </div>
-        </div>
-      </div>
-    </div>
+        <footer class="footer">
+            <div class="container pie">
+                <div class="row u-is-flex">
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Empresa</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="html/about.html">¿Que Es eAsyMove?</a></li>
+                            <li><a href="html/historia.html">Esta Es Nuestra Historia</a></li>
+                            <li><a href="html/valores.html">Estos Son Nuestros Valores</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Compartir coche</h5>
+                        <ul class="list-unstyled">
+                            <li><a  onclick="permitirAcceso()">Publica viajes</a></li>
+                            <li><a href="html/pasajeros.html">Busca viajes</a></li>
+                            
+                            
+                        </ul>
+                    </div>
+                   
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Informacion Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="html/condiciones_generales_de_uso.html">Condiciones Generales De Uso</a></li>
+                            <li><a href="html/Politica_Privacidad.html">Politica De Privacidad</a></li>
+                            <li><a href="html/Politica_Cookies.html">Politica De Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
 
-  </div>
-</footer>
+                <div class="disclaimer">
+                    <div class="row">
+                        <div class="col-sm-4 hidden-xs">
+                            &copy; 2016 eAsyMove.com - All Rights Reserved
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <a href="https://www.facebook.com" class="btn btn-social-icon btn-facebook">
+                                <i class="fa fa-facebook fa-1-5x"></i>
+                            </a>
+                            <a href="http://twitter.com" class="btn btn-social-icon btn-twitter">
+                                <i class="fa fa-twitter fa-1-5x"></i>
+                            </a>
+                            <a href="http://instagram.com" class="btn btn-social-icon btn-instagram">
+                                <i class="fa fa-instagram fa-1-5x"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-4 hidden-xs">
+                            <div class="pull-right">
+                                 <a href="#" >
+                                eAsyMove&nbsp; <img src="images/botones/favicon.PNG" alt=""/>  
+                            </a>
+                                                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
 
 
-        <!-- /.container -->
+        <!-------------ALERTAS EN REGISTRAR--------------->
+        
+        <div id="alert_mal_pass_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_pass_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LA CONTRASEÑA INTRODUCIDA ES ERRONEA.</div>
+                </div>
+            </div>
+            <div id="alert_mal_pass_iguales_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_pass_iguales_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LAS CONTRASEÑAS NO COINCIDEN.</div>
+                </div>
+            </div>
+            <div id="alert_mal_nombre_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_nombre_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN SU NOMBRE, SIN NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_apellido_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_apellido_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN SU APELLIDO, SIN NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_correo_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_correo_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN EL FORMATO DEL EMAIL.</div>
+                </div>
+            </div>
+            <div id="alert_mal_numero_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_numero_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA 9 NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_vacio_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_vacio_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LOS CAMPOS NO PUEDEN ESTAR VACIOS.</div>
+                </div>
+            </div>
+        <div id="alert_mal_usuario_repetido" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_usuario_repetido').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> EL USUARIO QUE HAS ELEGIDO NO ESTA DISPONIBLE.</div>
+                </div>
+            </div>
 
-        <!-- jQuery -->
-
-        <!-- Script to Activate the Carousel -->
+        <!-----------------ALERTAS EN LOGIN-------------->
+            <div id="alert_mal_vacio_login" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_vacio_login').style.display = 'none',document.getElementById('idlogin').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LOS CAMPOS NO PUEDEN ESTAR VACIOS.</div>
+                </div>
+            </div>
+     
+        
+        
         <script>
             $('.carousel').carousel({
                 interval: 5000 //changes the speed

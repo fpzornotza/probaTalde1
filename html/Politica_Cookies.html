@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="miApp">
+
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="description" content="">
+        <meta name="author" content="">
+        <link rel="icon" type="image/png" href="../images/botones/favicon.PNG"/>
+
+        <title>eAsyMove</title>
+        <!-- LIBRERIAS------>
+        <link href="../css/bootstrap.min.css" rel="stylesheet">
+        <link href="../css/modern-business.c ss" rel="stylesheet">
+        <link href="../css/bootstrap-social.css" rel="stylesheet" type="text/css"/>
+        <link href="../font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+        <link href="../css/bootstrap.css" rel="stylesheet" type="text/css"/>
+        <script src="../js/lib/angular.min.js" type="text/javascript"></script>
+        <script src="../js/lib/jquery.js" type="text/javascript"></script>
+        <script src="../js/lib/bootstrap.min.js" type="text/javascript"></script>
+
+        <!-- NUESTROS FICHEROS---->
+        <link href="../css/css.css" rel="stylesheet" type="text/css"/>
+        <link rel="../stylesheet" href="css/modern-business.css" type="text/css">
+        <script src="../js/comprobar_session_otros.js" type="text/javascript"></script>
+        <script src="../js/cambiar_imagenes_pueblos.js" type="text/javascript"></script>
+        <script src="../js/registro_login.js" type="text/javascript"></script>
+        <script src="../js/perfil_usuario.js" type="text/javascript"></script>
+        <script src="../js/subir_arriba.js" type="text/javascript"></script>
+        <script src="../js/reloj.js" type="text/javascript"></script>
+        <script src="../js/conductor.js" type="text/javascript"></script>
+    </head>
+
+    <body>
+        <div class="ir-arriba ">
+
+
+            <img src="../images/botones/flecha_subir.png" alt=""/>
+        </div>
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top pie" role="navigation">
+            <div class="container pie">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand parpadea" id="nombrempresa" href="../index.html">eAsyMove</a>
+                </div>
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                            <a href="about.html">About</a>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Zonas <b class="caret"></b></a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a href="portfolio-1-col.html">DURANGUESADO</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-2-col.html">GRAN BILBAO</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-3-col.html">ARRATIA-NERBIOI</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-4-col.html">LEA-ARTIBAI</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-item.html">BUSTURIALDEA</a>
+                                </li>
+                                <li>
+                                    <a href="portfolio-item.html">URIBE</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="contacto.html">Contacto</a>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav navbar-right" >
+                        <div id="nav_logeado" ng-controller="miControlador">
+                            <li class="nombre_usuario_nav" ng-repeat="usuario in usuarios">
+                                <a href="perfil_usuario1.html">Has entrado como <span class="nombre_logeado">{{usuario.usuario}}</span></a>
+                            </li>
+                            <li class="dropdown">
+                                <a href="#" class="dropdown-toggle" data-toggle="dropdown">Perfil <b class="caret"></b></a>
+                                <ul class="dropdown-menu menu_hover">
+                                    <li>
+                                        <a href="cambiar_perfil_usuario.html"><img width="25" height="20" src="../images/configuracion/config.png" alt=""/>&nbsp;&nbsp;<span class="hover">Modificar Perfil</span></a>
+                                    </li>
+                                    <li>
+                                        <a href="perfil_usuario1.html"><img width="25" height="20" src="../images/configuracion/Users.png" alt=""/>&nbsp;&nbsp;<span class="hover">Ver Perfil</span></a>
+
+                                    </li>
+                                    <li>
+                                        <a href="#" class="salirUsuario"><img width="25" height="20" src="../images/configuracion/salir.png" alt=""/>&nbsp;&nbsp;<span class="hover">Cerrar sesion</span></a>
+
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                        <!-- <li>
+                             <button type="button" id="salirUsuario">Salir</button>
+                         </li> -->
+                        <div id="nav_no_logeado">
+                            <li>
+                                <a onclick="abrirRegistrar()" id="abrirRegistrar" href="#">Registrar</a>
+                            </li>
+                            <li>
+                                <a onclick="abrirLogin()" id="abrirLogin" href="#">Entrar</a>
+                            </li>
+                            <li>
+                                <div id="id02" class="modalregistrar" >
+
+                                    <form id="login"  method="POST" action="">
+
+                                        <div class="formulario" id="registrar">
+                                            <label><b>Usuario:</b></label>
+                                            <input type="text" placeholder="Nombre de usuario" class="c_input"  id="usuario">
+
+                                            <label><b>Nombre:</b></label>
+                                            <input type="text" placeholder="Nombre"  class="c_input"  id="nombre">
+
+                                            <label><b>Apellido:</b></label>
+                                            <input type="text" placeholder="Apellido"  class="c_input"  id="apellido">
+
+                                            <label><b>Contraseña:</b></label>
+                                            <input type="password" placeholder="Contraseña"  class="c_input"  id="contrasena">
+
+                                            <label><b>Repita Contraseña:</b></label>
+                                            <input type="password" placeholder="Confirmar contraseña"  class="c_input"  id="contrasena1">
+
+                                            <label><b>Correo:</b></label>
+                                            <input type="email" placeholder="e-mail"  class="c_input"  id="correo"><br>
+
+                                            <label><b>Sexo:</b></label>
+                                            <select id="sexo">
+                                                <option  value="masculino" selected="">Masculino</option>
+                                                <option  value="femenino">Femenino</option>
+
+                                            </select> 
+                                            <label><b>Tienes Coche:</b></label>
+                                            <input type="checkbox" value="0" id="coche"/>
+
+
+
+                                            <br/>
+                                            <br/>
+
+                                            <label><b>Telefono:</b></label>
+                                            <input type="tel" id="telefono"  class="c_input"  placeholder=" 000 00 00 00">
+
+
+
+                                            <!--<button type="submit" onsubmit="realizaProceso($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(), $('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())" >registrar</button>-->
+                                            <input type="button" value="Registrar" id="registrar_usu" class="botonverde"/>
+                                            <!--   parametros_requeridos_nok($('#usuario').val(), $('#nombre').val(), $('#apellido').val(), $('#contrasena').val(),$('#contrasena1').val(), $('#correo').val(), $('.sexo').val(), $('#telefono').val())-->
+
+
+
+                                            <button type="button" onclick="ocultarRegistro()" class="ocultarRegistro cancelbtn">Cancelar</button>
+                                        </div>
+                                    </form>
+                                    Resultado: <span id="resultado">0</span>
+                                </div>
+
+                                <div id="idlogin" class="modallogin">
+
+                                    <!-- Modal Content -->
+                                    <form action="" method="POST" class=" animate">
+
+
+                                        <div class="formulario" id="logear">
+                                            <label><b>Usuario</b></label>
+                                            <input type="text" class="c_input" placeholder="Usuario" id="loginUsuario" >
+
+                                            <label><b>Contraseña</b></label>
+                                            <input type="password" class="c_input" placeholder="Contraseña" id="loginContrasena" >
+
+                                            <span id="logeado_error">Usuario o contraseña no valido.<br>
+                                                                     El usuario tiene que estar verificado.
+                                            </span>
+                                            <br>
+
+                                            <input type="button" id="logear_usu" value="Acceder" class="botonverde"/>
+
+
+                                            <button type="button" onclick="ocultarLogin()" class="ocultarLogin cancelbtn">Cancelar</button>
+                                            <input type="checkbox" checked="checked"> Remember me<br>
+                                            <span class="psw"> <a href="#">He olvidado mi contraseña?</a></span>
+                                        </div>
+
+                                        <div class="container" style="background-color:#f1f1f1">
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                        </div>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">ESP<b class="caret"></b></a>
+                            <ul class="dropdown-menu menu_hover">
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">Euskera</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">Español</span></a>
+                                </li>
+                                <li>
+                                    <a href="#">&nbsp;&nbsp;<span class="hover">English</span></a>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <ul class="reloj">
+
+                                <h7 id="tx"></h7><p id="title"></p>
+
+
+                            </ul>
+                        </li>
+
+                    </ul>
+                </div>
+                <!-- /.navbar-collapse -->
+            </div>
+            <!-- /.container -->
+        </nav>
+
+
+        <!-- Page Content -->
+        <div class="container">
+
+            <!-- Page Heading/Breadcrumbs -->
+
+            <!-- /.row -->
+
+            <div class="row">
+
+                <!-- Blog Entries Column -->
+                <div class="col-md-12">
+                    <br>
+                    <br>
+                    <br>
+                    <!-- First Blog Post -->
+                    <h2>
+                        <a href="#">Politica De Cookies</a>
+                    </h2>
+                    <p style="text-align: justify;">Comuto SA (“eAsyMove”, “nosotros” o “nuestro”) utiliza tecnología de cookies para ofrecerte un servicio web mejor y más personalizado. En esta Política de Cookies de eAsyMove (la “Política de Cookies”) te proporcionamos total transparencia sobre cómo y con qué fines usamos use cookies en este sitio web.</p>
+                    <p style="text-align: justify;"></p><h2>¿Qué es una cookie y para qué se utiliza?</h2><p></p>
+                    <p style="text-align: justify;">Una cookie es un pequeño archivo de texto que es almacenado y/o leído por tu navegador en el disco duro de tu dispositivo (p. ej., ordenador, portátil o smartphone), por los sitios web que visitas. Prácticamente todos los sitios web utilizan tecnología de cookies para funcionar y para optimizar su diseño y funcionalidad. Las cookies también consiguen que tus interacciones con los sitios web sean más rápidas y seguras, ya que pueden recordar tus preferencias (p. ej., inicio de sesión e idioma), remitiendo la información que contienen de vuelta al sitio web que las ha originado (cookie propia) o a otro sitio web al que pertenezca (cookie de terceros), cuando vuelvas a visitar el correspondiente sitio web utilizando el mismo dispositivo. Dependiendo de la función y del objetivo de uso de las cookies, normalmente se dividen en las siguientes categorías, que son utilizadas por eAsyMove en este sitio web:</p>
+                    <p style="text-align: justify;"><u>Cookies</u><u> estrictamente necesarias:</u> te permiten desplazarte por el sitio web y utilizar sus funciones básicas. Normalmente se instalan exclusivamente en respuesta a acciones que realices que se traduzcan en una solicitud de servicios, tales como acceso a un área segura de nuestro sitio web. Estas cookies son indispensables para el uso de este sitio web.</p>
+                    <p style="text-align: justify;"><u>Cookies de funcionalidad:</u> se utilizan para reconocerte cuando vuelvas a acceder a nuestro sitio web y nos permiten ofrecerte funciones mejoradas y más personalizadas, tales como saludarte por tu nombre y recordar tus preferencias (p. ej., tu elección de idioma o región). Estas cookies recogen información anónima y no pueden rastrear tus movimientos en otros sitios web.</p>
+                    <p style="text-align: justify;"><u>Cookies analíticas y de rendimiento:</u> nos permiten reconocer y contar el número de visitantes, así como recabar información sobre la forma de uso del sitio web (p. ej., qué páginas abre un visitante  con más frecuencia y si el usuario recibe mensajes de error de algunas páginas). Esto nos ayuda a mejorar la forma de funcionamiento de nuestro sitio web, por ejemplo, asegurándose de que los usuarios encuentren fácilmente lo que estén buscando.</p>
+                    <p style="text-align: justify;"><u>Cookies de marketing y de preferencias:</u> registran tu visita a nuestro sitio web, las páginas que has visitado y los vínculos que has seguido. Utilizaremos esta información para proporcionar anuncios más importantes para ti y para tus intereses. También se usan para limitar el número de veces que ves un anuncio y para ayudar a medir la eficacia de campañas de publicidad. También podremos compartir esta información con terceros (tales como anunciantes) a estos efectos.</p>
+                    <p style="text-align: justify;"><u>Uso de cookies de terceros</u></p>
+                    <p style="text-align: justify;">Ten en cuenta que eAsyMove utiliza los servicios de terceros para conocer tu uso de este sitio web, para optimizar tu experiencia de usuario y para mostrarte publicidad fuera de este sitio web. Estos terceros (incluidos, por ejemplo, redes publicitarias y prestadores de servicios externos, como servicios de análisis de tráfico de red) también pueden usar cookies, sobre las que no tenemos ningún control.</p>
+                    <p style="text-align: justify;"></p><h2>¿Qué hacer si no deseas que se instalen cookies?</h2><p></p>
+                    <p style="text-align: justify;">En cualquier momento podrás retirar tu consentimiento a las cookies. Para ello, sigue las indicaciones siguientes:</p>
+                    <p style="text-align: justify;"><strong>Modificación de la configuración de tu navegador</strong>:</p>
+                    <p style="text-align: justify;">Si deseas eliminar las cookies almacenadas en tu dispositivo y configurar tu navegador para que rechace cookies, puedes hacerlo a través de la configuración de preferencias de tu navegador. Normalmente la configuración del navegador sobre cookies se encuentra en los menús «Opciones», «Herramientas» o «Preferencias» del navegador que utilices para acceder a este sitio web.</p>
+                    <p style="text-align: justify;">No obstante, dependiendo de los navegadores existentes, se pueden usar diversos medios de inhabilitación de cookies. Para mayor información haz click en los siguientes vínculos:</p>
+                    <ul style="text-align: justify;">
+                        <li><a href="http://windows.microsoft.com/es-es/windows7/block-enable-or-allow-cookies"><u><span style="color: #0066cc;">Microsoft Internet Explorer</span></u></a></li>
+                        <li><a href="https://support.google.com/accounts/answer/61416?hl=es"><u><span style="color: #0066cc;">Google Chrome</span></u></a></li>
+                        <li><a href="https://support.apple.com/kb/PH19214?locale=es_ES&amp;viewlocale=es_ES"><u><span style="color: #0066cc;">Safari</span></u></a></li>
+                        <li><a href="https://support.mozilla.org/es/kb/habilitar-y-deshabilitar-cookies-sitios-web-rastrear-preferencias"><u><span style="color: #0066cc;">Firefox</span></u></a></li>
+                        <li><a href="http://help.opera.com/Windows/11.50/es-ES/cookies.html"><u><span style="color: #0066cc;">Opera</span></u></a></li>
+                    </ul>
+                    <p style="text-align: justify;">Ten en cuenta que, aunque al configurar tu navegador rechaces el uso y almacenamiento de cookies en tu ordenador, podrás navegar en nuestro sitio web. Sin embargo algunas opciones o funciones podrán no funcionar adecuadamente.</p>
+                    <p style="text-align: justify;"><strong>Desactivación online de las cookies:</strong></p>
+                    <ul style="list-style-type: square;">
+                        <li style="text-align: justify;">Cookies analíticas o de rendimiento: <a href="https://tools.google.com/dlpage/gaoptout?hl=es" target="_blank"><u><span style="color: #0066cc;">Google Analitics</span></u></a>, <a href="http://trck.spoteffects.net/analytics/index_siteid50.php?module=CoreAdminHome&amp;action=optOut&amp;language=es" target="_blank"><u><span style="color: #0066cc;">Spoteffects</span></u></a> o <a href="https://www.realytics.io/optout/" target="_blank"><u><span style="color: #0066cc;">Realytics</span></u></a></li>
+                        <li style="text-align: justify;">Cookies de preferencias o de publicidad: <a href="https://support.google.com/adsense/answer/2839090?hl=es" target="_blank"><u><span style="color: #0066cc;">Double-click</span></u></a></li>
+                        <li style="text-align: justify;">Cookies de redes sociales: <a href="https://www.facebook.com/policies/cookies/" target="_blank"><u><span style="color: #0066cc;">Facebook</span></u></a></li>
+                    </ul>
+                    <hr />
+                    <p style="text-align: justify;"></p><h3>¿Tienes alguna pregunta sobre la Política de Cookies de eAsyMove Cookie?</h3><p></p>
+                    <p style="text-align: justify;">Si tienes cualquier pregunta o duda sobre la Política de Cookies de eAsyMove, por favor, ponte en contacto con nosotros mediante el <a href="https://www.eAsyMove.es/contacto/?comuto_cmkt=ES_COM_BLOG_contactoblablalife&amp;utm_source=COM_BLOG&amp;utm_medium=Post&amp;utm_campaign=ES_COM_BLOG_contactoblablalife" target="_blank"><u><span style="color: #0066cc;">formulario de contacto online</span></u></a>.</p>        </div>
+
+
+
+                <ul class="pager">
+                    <li class="previous">
+                        <a href="Politica_Privacidad.html">&larr; Politica De Privacidad</a>
+                    </li>
+                    <li class="next">
+                        <a href="condiciones_generales_de_uso.html">Condiciones Generales De Uso &rarr;</a>
+                    </li>
+                </ul>
+
+            </div>
+
+            <hr>
+
+        </div>
+        <!-- /.row -->
+
+
+
+
+<footer class="footer">
+            <div class="container pie">
+                <div class="row u-is-flex">
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Empresa</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="about.html">¿Que Es eAsyMove?</a></li>
+                            <li><a href="historia.html">Esta Es Nuestra Historia</a></li>
+                            <li><a href="valores.html">Estos Son Nuestros Valores</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Compartir coche</h5>
+                        <ul class="list-unstyled">
+                            <li><a onclick="permitirAccesoOtros()">Publica viajes</a></li>
+                            <li><a href="pasajeros.html">Busca viajes</a></li>
+                            
+                            
+                        </ul>
+                    </div>
+                   
+                    <div class="col-md-4 col-sm-4 col-xs-6 mt4 mt0-md">
+                        <h5>Informacion Legal</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="condiciones_generales_de_uso.html">Condiciones Generales De Uso</a></li>
+                            <li><a href="Politica_Privacidad.html">Politica De Privacidad</a></li>
+                            <li><a href="Politica_Cookies.html">Politica De Cookies</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="disclaimer">
+                    <div class="row">
+                        <div class="col-sm-4 hidden-xs">
+                            &copy; 2016 eAsyMove.com - All Rights Reserved
+                        </div>
+                        <div class="col-sm-4 text-center">
+                            <a href="https://www.facebook.com" class="btn btn-social-icon btn-facebook">
+                                <i class="fa fa-facebook fa-1-5x"></i>
+                            </a>
+                            <a href="http://twitter.com" class="btn btn-social-icon btn-twitter">
+                                <i class="fa fa-twitter fa-1-5x"></i>
+                            </a>
+                            <a href="http://instagram.com" class="btn btn-social-icon btn-instagram">
+                                <i class="fa fa-instagram fa-1-5x"></i>
+                            </a>
+                        </div>
+                        <div class="col-sm-4 hidden-xs">
+                            <div class="pull-right">
+                                 <a href="#" >
+                                eAsyMove&nbsp; <img src="../images/botones/favicon.PNG" alt=""/>  
+                            </a>
+                                                              
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </footer>
+        
+        <!-------------ALERTAS EN REGISTRAR--------------->
+        <div id="alert_mal_pass_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_pass_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LA CONTRASEÑA INTRODUCIDA ES ERRONEA.</div>
+                </div>
+            </div>
+            <div id="alert_mal_pass_iguales_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_pass_iguales_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LAS CONTRASEÑAS NO COINCIDEN.</div>
+                </div>
+            </div>
+            <div id="alert_mal_nombre_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_nombre_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN SU NOMBRE, SIN NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_apellido_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_apellido_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN SU APELLIDO, SIN NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_correo_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_correo_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA BIEN EL FORMATO DEL EMAIL.</div>
+                </div>
+            </div>
+            <div id="alert_mal_numero_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_numero_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> INTRODUZCA 9 NUMEROS.</div>
+                </div>
+            </div>
+            <div id="alert_mal_vacio_registrar" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_vacio_registrar').style.display = 'none',document.getElementById('id02').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LOS CAMPOS NO PUEDEN ESTAR VACIOS.</div>
+                </div>
+            </div>
+
+        <!-----------------ALERTAS EN LOGIN-------------->
+            <div id="alert_mal_vacio_login" class="modalAlertas">
+                <div   class="alert alert-danger fade in alertas_error">
+                    <span onclick="document.getElementById('alert_mal_vacio_login').style.display = 'none',document.getElementById('idlogin').style.display = 'block'" 
+                          class="close" title="Close Modal">&times;</span>
+                    <div class="texto_alertas"><strong>ERROR:</strong> LOS CAMPOS NO PUEDEN ESTAR VACIOS.</div>
+                </div>
+            </div>
+
+
+    </body>
+
+</html>

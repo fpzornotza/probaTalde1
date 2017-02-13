@@ -1,3 +1,4 @@
+$("*").load(function(){
 $.ajax({
         url: '../php/comprobar_session.php',
         type: 'post',
@@ -7,6 +8,13 @@ $.ajax({
         success: function (response) {
             if (response.length > 0) {
                 window.location.href = "../index.html";
-            } 
+                 $("#nav_no_logeado").css("display","inline");
+                $("#nav_logeado").css("display","none");
+            } else{
+                /////////////ESTA LOGEADO////////
+                $("#nav_no_logeado").css("display","none");
+                $("#nav_logeado").css("display","inline");
+            }
         }
     });
+});

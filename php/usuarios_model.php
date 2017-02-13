@@ -1,7 +1,5 @@
 <?php
 
-
-
 //enaut usarios taula ukitzen duten metod guztien implementazioa klase honetan
 //egon behar da. login_model actualizar_datos_model eta abar.
 class usuarios_model {
@@ -17,7 +15,7 @@ class usuarios_model {
             echo $e->getMessage();
         }
     }
-    
+
 //mostrar perfil del usuario registrado cuando esta logeado.
     function mostrarPerfilUsuarios($usuario) {
         try {
@@ -32,7 +30,7 @@ class usuarios_model {
                     $c++;
                 }
                 $usuario = json_encode($filas);
-          print $usuario;  
+                print $usuario;
             } else {
                 
             }
@@ -41,24 +39,22 @@ class usuarios_model {
         }
     }
 
-    
     ///////////realizar registro/////////
     //
         //erabiltzaile bat erregistratu
-    
-     public function altaUsuario($usuario,$nombre,$apellido,$telefono,$correo,$contrasena,$sexo) {
+
+    public function altaUsuario($usuario, $nombre, $apellido, $telefono, $correo, $contrasena, $sexo, $coche,$foto) {
         try {
-            $sql = "INSERT INTO usuarios(usuario,nombre,apellido,telefono,correo,contrasena,sexo) VALUES('" . $usuario . "','" . $nombre . "','" . $apellido . "','" . $telefono . "','" . $correo . "','" . $contrasena . "','" . $sexo . "');";
+            $sql = "INSERT INTO usuarios(usuario,nombre,apellido,telefono,correo,foto,contrasena,sexo,coche,activo) VALUES('" . $usuario . "','" . $nombre . "','" . $apellido . "','" . $telefono . "','" . $correo . "','" . $foto . "','" . $contrasena . "','" . $sexo . "','" . $coche . "',0);";
             $res = $this->mysqli->query($sql);
-            return $res;
-           
+            return true;
         } catch (Exception $ex) {
             throw $ex;
         }
     }
-    
+
     //erabiltzailea existitzen den konprobatu
-     public function existeUsuario($usuario) {
+    public function existeUsuario($usuario) {
         $sql = "SELECT * FROM usuarios WHERE usuario = '" . $usuario . "'";
         $this->mysqli->query($sql);
         if ($this->mysqli->affected_rows == 1) {
@@ -68,11 +64,39 @@ class usuarios_model {
         }
     }
     
+    public function traerEmail($usuario) {
+        try {
+            $query = "SELECT correo FROM usuarios WHERE usuario = '" . $usuario . "'";
+            $resultSet = $this->mysqli->query($query);
+            
+            $lerroa = $resultSet->fetch_array();
+            return $lerroa['correo'];
+            
+//--------------TAMBIEN SE PUEDE HACER USANDO FETCH_OBJECT------------            
+//            $lerroa = $resultSet->fetch_object();
+//            return $lerroa->correo;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    
+    public function activarCuenta($usuario) {
+        try {
+
+            $sql = "UPDATE usuarios SET activo=1 WHERE usuario='".$usuario."'";
+
+            $this->mysqli->query($sql);
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    
     ///////////////////// LOGIN///////////
-    
-    
-    
-    
+
+
+
+
     public function consulta_usuarios() {
         try {
             $loginUsuario = $_POST['loginUsuario'];
@@ -120,9 +144,9 @@ class usuarios_model {
     }
 
     ///// erabiltzailea eta pass ondo sartu dizen konprobatu
-    
+
     public function validar($usuario, $contrasena) {
-        $query = "select usuario from usuarios where usuario='$usuario' and contrasena='$contrasena'";
+        $query = "select usuario from usuarios where usuario='$usuario' and contrasena='$contrasena' and activo=1";
         $result = $this->mysqli->query($query);
         if ($result->num_rows == 1) {
             return TRUE;
@@ -161,18 +185,42 @@ class usuarios_model {
 //            return FALSE;
 //        }
 //    }
-    
-    
     //////////////ACTUALIZAR DATOS
-    
-    
- /// perfileko datuak modifikatu
-    
-    public function actualizarDatos($usuario, $nombre, $apellido, $contrasena, $correo, $telefono, $descripcion) {
+    /// perfileko datuak modifikatu
+
+    public function actualizarDatos($usuario, $nombre, $apellido, $contrasena, $correo, $telefono, $coche, $descripcion) {
         try {
-            
-             $sql = "UPDATE usuarios SET nombre='$nombre', apellido='$apellido', telefono=$telefono, correo='$correo', descripcion='$descripcion', contrasena='$contrasena' WHERE usuario='$usuario'";
-            
+
+            $sql = "UPDATE usuarios SET nombre='$nombre', apellido='$apellido', telefono=$telefono, correo='$correo', descripcion='$descripcion', contrasena='$contrasena', coche='$coche' WHERE usuario='$usuario'";
+
+            $res = $this->mysqli->query($sql);
+            return $res;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    
+    public function eliminarParada($usuario) {
+        try {
+            $sql = "DELETE FROM parada where usuario_conductor='$usuario';";
+            $res = $this->mysqli->query($sql);
+            return $res;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    public function eliminarViaje($usuario) {
+        try {
+            $sql = "DELETE FROM viaje where usuario='$usuario';";
+            $res = $this->mysqli->query($sql);
+            return $res;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    public function eliminarUsuario($usuario, $contrasena) {
+        try {
+            $sql = "DELETE FROM usuarios where usuario='$usuario' && contrasena='$contrasena';";
             $res = $this->mysqli->query($sql);
             return $res;
         } catch (Exception $ex) {
@@ -180,7 +228,19 @@ class usuarios_model {
         }
     }
 
+    public function disponibilidadCoche($usuario) {
+        try {
+            $sql = "SELECT coche FROM usuarios where usuario='$usuario';";
+//            $res = $this->mysqli->query($sql);
+//            echo mysql_num_fields($res);
 
-
-    
+            if ($res = $this->mysqli->query($sql)) {
+                while ($obj = $res->fetch_object()) {
+                    printf($obj->coche);
+                }
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
 }

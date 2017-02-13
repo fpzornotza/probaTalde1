@@ -3,6 +3,7 @@
 <?php
 
 include_once './usuarios_model.php';
+include_once 'SendMail/send.php';
 
 
 
@@ -25,27 +26,20 @@ $telefono = $_POST['telefono']; //telefono
 $correo = $_POST['correo']; //email
 $contrasena = $_POST['contrasena']; //contraseña
 $sexo = $_POST['sexo']; //sexo
-//
+$coche = $_POST['coche']; //disponibilidad de coche
+$foto = $_POST['foto'];
 
 
 
-//comprobacion de usuario
-//            if ($registro_model->existeUsuario($usuario)) {
-//
-//                //el suario existe, mensaje error
-//                $resultado="el usuario  exixte";
-//            } else {
-//insertar usuario en la BD
-$resultado = $registro_model->altaUsuario($usuario, $nombre, $apellido, $telefono, $correo, $contrasena, $sexo);
-//el suario no existe, mensaje ok
-//$resultado="el usuario no exixte";
-//            }
-//
-//            break;
-//
-//        default:
-//            break;
-//    }
-//}
-echo $resultado;
+
+//print_r($_POST);
+$resultado = $registro_model->altaUsuario($usuario, $nombre, $apellido, $telefono, $correo, $contrasena, $sexo,$coche,$foto);
+
+if($resultado){
+    $viewenviarMail->sendMail($correo,$usuario);
+    echo 1;
+}else{
+    echo 0;
+}
+
 ?>

@@ -3366,23 +3366,23 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 	margin-bottom:0;
 	list-style:none
 }
-.nav>li {
+.nav li {/****aldatute (>) espaciogaitzik ******/
 	position:relative;
 	display:block
 }
-.nav>li>a {
+.nav li>a {/****aldatute (>) espaciogaitzik ******/
 	position:relative;
 	display:block;
 	padding:10px 15px
 }
-.nav>li>a:focus,.nav>li>a:hover {
+.nav li>a:focus,.nav li>a:hover {/****aldatute (>) espaciogaitzik ******/
 	text-decoration:none;
 	background-color:#eee
 }
-.nav>li.disabled>a {
+.nav li.disabled>a {/****aldatute (>) espaciogaitzik ******/
 	color:#777
 }
-.nav>li.disabled>a:focus,.nav>li.disabled>a:hover {
+.nav li.disabled>a:focus,.nav li.disabled>a:hover {/****aldatute (>) espaciogaitzik ******/
 	color:#777;
 	text-decoration:none;
 	cursor:not-allowed;
@@ -3398,7 +3398,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 	overflow:hidden;
 	background-color:#e5e5e5
 }
-.nav>li>a>img {
+.nav li>a>img {/****aldatute (>) espaciogaitzik ******/
 	max-width:none
 }
 .nav-tabs {
@@ -3683,7 +3683,7 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .navbar-nav {
 	margin:7.5px -15px
 }
-.navbar-nav>li>a {
+.navbar-nav li>a {/****aldatute (>) espaciogaitzik ******/
 	padding-top:10px;
 	padding-bottom:10px;
 	line-height:20px
@@ -3714,10 +3714,10 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 		float:left;
 		margin:0
 	}
-	.navbar-nav>li {
+	.navbar-nav li {/****aldatute >******/
 		float:left
 	}
-	.navbar-nav>li>a {
+	.navbar-nav li>a {
 		padding-top:15px;
 		padding-bottom:15px
 	}
@@ -3798,12 +3798,12 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 		box-shadow:none
 	}
 }
-.navbar-nav>li>.dropdown-menu {
+.navbar-nav li>.dropdown-menu {/****aldatute (>) espaciogaitzik ******/
 	margin-top:0;
 	border-top-left-radius:0;
 	border-top-right-radius:0
 }
-.navbar-fixed-bottom .navbar-nav>li>.dropdown-menu {
+.navbar-fixed-bottom .navbar-nav li>.dropdown-menu {/****aldatute (>) espaciogaitzik ******/
 	margin-bottom:0;
 	border-top-left-radius:4px;
 	border-top-right-radius:4px;
@@ -3859,10 +3859,10 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .navbar-default .navbar-text {
 	color:#777
 }
-.navbar-default .navbar-nav>li>a {
+.navbar-default .navbar-nav li>a {/****aldatute (>) espaciogaitzik ******/
 	color:#777
 }
-.navbar-default .navbar-nav>li>a:focus,.navbar-default .navbar-nav>li>a:hover {
+.navbar-default .navbar-nav li>a:focus,.navbar-default .navbar-nav li>a:hover {/****aldatute (>) espaciogaitzik ******/
 	color:#333;
 	background-color:transparent
 }
@@ -3936,11 +3936,11 @@ select[multiple].input-group-sm>.form-control,select[multiple].input-group-sm>.i
 .navbar-inverse .navbar-text {
 	color:#9d9d9d
 }
-.navbar-inverse .navbar-nav>li>a {
+.navbar-inverse .navbar-nav li>a {/****aldatute (>) espaciogaitzik ******/
 	color:#9d9d9d
 }
-.navbar-inverse .navbar-nav>li>a:focus,.navbar-inverse .navbar-nav>li>a:hover {
-	color:#fff;
+.navbar-inverse .navbar-nav li>a:focus,.navbar-inverse .navbar-nav li>a:hover {/****aldatute (>) espaciogaitzik ******/
+	/*color:#fff;*/
 	background-color:transparent
 }
 .navbar-inverse .navbar-nav>.active>a,.navbar-inverse .navbar-nav>.active>a:focus,.navbar-inverse .navbar-nav>.active>a:hover {

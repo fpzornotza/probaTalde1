@@ -1,0 +1,12 @@
+
+<?php
+include_once './pasajero_model.php';
+$objReservas = new pasajero_model();
+
+session_start();
+$usuario = $_SESSION['username'];
+
+$consulta = $objReservas->mostrarReservas($usuario);
+echo $consulta;
+
+

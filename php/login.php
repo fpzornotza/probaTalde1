@@ -1,7 +1,4 @@
        <?php
-       session_start();
-if($_SESSION['logeado'] == TRUE){   ////////////COMPRUEBA QUE EL USUARIO ESTA LOGEADO///////////
-
         include_once './usuarios_model.php';
 
         $login_model = new usuarios_model();
@@ -25,4 +22,3 @@ if($_SESSION['logeado'] == TRUE){   ////////////COMPRUEBA QUE EL USUARIO ESTA LO
           //  header("Location: ../index.html?mensaje=usuario o pass mal");
             print("mal");
         }
-}

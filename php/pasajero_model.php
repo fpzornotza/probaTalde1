@@ -1,0 +1,164 @@
+<?php
+/**
+ * holaaaaa
+ */
+class pasajero_model {
+
+    public function __construct() {
+        try {
+
+            $this->mysqli = new mysqli('localhost', 'root', '', 'reto3');
+            if ($this->mysqli->connect_errno) {
+                throw new Exception('Error al conectar: ' . $this->mysqli->connect_error);
+            }
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+/**
+ * 
+ * @return type sdsdsdsdsd;
+ * @throws Exception
+ */
+    function mostrarTodasLasParadas() {
+        try {
+            $query = "SELECT viaje.id_viaje , parada.pueblo,parada.parada,parada.hora,parada.minuto,parada.precio,viaje.zona,viaje.salida,viaje.fecha,viaje.n_disponibles,parada.id_parada, viaje.usuario,usuarios.foto,usuarios.reputacion,usuarios.sexo,usuarios.nivel_conductor from parada,viaje,usuarios where parada.id_viaje=viaje.id_viaje and usuarios.usuario=viaje.usuario and viaje.n_disponibles>0";
+            $query_execute = $this->mysqli->query($query);
+
+            if ($query_execute->num_rows) {
+
+                $c = 0;
+                while ($query_result = $query_execute->fetch_array()) {
+                    $filas[$c] = $query_result;
+                    $c++;
+                }
+                $paradas = json_encode($filas);
+                return $paradas;
+            } else {
+                
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    public function restarAsientos($id_viaje) {
+        try {
+            $sql = "UPDATE viaje SET n_disponibles=n_disponibles-1  where id_viaje='$id_viaje'";
+            $res = $this->mysqli->query($sql);
+
+            return $res;
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+/**
+ * 
+ * @param type f
+ * @return type
+ * @throws Exception
+ */
+    function mostrarParadas($id_viaje) {
+        try {
+
+// $query = "SELECT viaje.id_viaje , parada.pueblo,parada.parada,parada.hora,parada.minuto,parada.precio,viaje.zona,viaje.salida,viaje.fecha,viaje.n_disponibles,parada.id_parada, viaje.usuario,usuarios.foto,usuarios.reputacion,usuarios.sexo from parada,viaje,usuarios where parada.id_viaje=viaje.id_viaje and viaje.usuario= '" . $usuario . "' and usuarios.usuario='" . $usuario . "'";
+            $query = "select * from parada where id_viaje ='" . $id_viaje . "'";
+            $query_execute = $this->mysqli->query($query);
+
+            if ($query_execute->num_rows) {
+
+                $c = 0;
+                while ($query_result = $query_execute->fetch_array()) {
+                    $filas[$c] = $query_result;
+                    $c++;
+                }
+//  echo '<script language="javascript">alert("'.$query.'");</script>';
+                return $filas;
+            } else {
+                
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+
+    function registrarReserva($id_parada,$usuario){
+        try {
+            $sql = "INSERT INTO reservas(pasajero, id_parada,estado) VALUES('" . $usuario . "'," . $id_parada . ",'en espera');";
+            $this->mysqli->query($sql);
+      
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+        
+    }
+    function mostrarReservas($usuario) {
+        try {
+            $query = "SELECT * FROM reservas,parada,viaje where reservas.id_parada=parada.id_parada AND parada.id_viaje=viaje.id_viaje AND reservas.pasajero='".$usuario."'";
+         $query_execute = $this->mysqli->query($query);
+
+            if ($query_execute->num_rows) {
+
+                $c = 0;
+                while ($query_result = $query_execute->fetch_array()) {
+                    $filas[$c] = $query_result;
+                    $c++;
+                }
+                $reservas = json_encode($filas);
+                return $reservas;
+            } else {
+                
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    }
+    function mostrarPerfilUsuariosPasajero($usuario) {
+
+            try {
+            $query = "SELECT * FROM usuarios where usuario='".$usuario."'";
+            $query_execute = $this->mysqli->query($query);
+
+            if ($query_execute->num_rows) {
+
+                $c = 0;
+                while ($query_result = $query_execute->fetch_array()) {
+                    $filas[$c] = $query_result;
+                    $c++;
+                }
+                $perfil = json_encode($filas);
+                return $perfil;
+            } else {
+                
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+    
+    
+    
+        }
+        function ordenarPorZonas($zona) {
+
+            try {
+            $query = "SELECT viaje.id_viaje , parada.pueblo,parada.parada,parada.hora,parada.minuto,parada.precio,viaje.zona,viaje.salida,viaje.fecha,viaje.n_disponibles,parada.id_parada, viaje.usuario,usuarios.foto,usuarios.reputacion,usuarios.sexo,usuarios.nivel_conductor from parada,viaje,usuarios where parada.id_viaje=viaje.id_viaje and usuarios.usuario=viaje.usuario and viaje.n_disponibles>0 and viaje.zona='".$zona."'";
+            $query_execute = $this->mysqli->query($query);
+
+            if ($query_execute->num_rows) {
+
+                $c = 0;
+                while ($query_result = $query_execute->fetch_array()) {
+                    $filas[$c] = $query_result;
+                    $c++;
+                }
+                $zona = json_encode($filas);
+                return $zona;
+            } else {
+                
+            }
+        } catch (Exception $ex) {
+            throw $ex;
+        }
+
+        }
+}
